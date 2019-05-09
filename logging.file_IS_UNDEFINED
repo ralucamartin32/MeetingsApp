@@ -1,340 +1,252 @@
-2019-05-08 16:17:56.600 [main] INFO  e.a.m.MeetingsappApplication - Starting MeetingsappApplication on laptoparbs697 with PID 2340 (C:\Users\raluca.martin\Internship\MeetingsApp\target\classes started by raluca.martin in C:\Users\raluca.martin\Internship\MeetingsApp)
-2019-05-08 16:17:56.606 [main] INFO  e.a.m.MeetingsappApplication - No active profile set, falling back to default profiles: default
-2019-05-08 16:17:58.672 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
-2019-05-08 16:17:58.788 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 104ms. Found 3 repository interfaces.
-2019-05-08 16:17:59.350 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$63452b5f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2019-05-08 16:17:59.916 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 10080 (http)
-2019-05-08 16:17:59.949 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-10080"]
-2019-05-08 16:17:59.966 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2019-05-08 16:17:59.967 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
-2019-05-08 16:18:00.204 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2019-05-08 16:18:00.204 [main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 3482 ms
-2019-05-08 16:18:00.436 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2019-05-08 16:18:00.496 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2019-05-08 16:18:00.567 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+2019-05-09 09:30:16.299 [main] INFO  e.a.m.MeetingsappApplication - Starting MeetingsappApplication on laptoparbs697 with PID 6488 (C:\Users\raluca.martin\Internship\MeetingsApp\target\classes started by raluca.martin in C:\Users\raluca.martin\Internship\MeetingsApp)
+2019-05-09 09:30:16.328 [main] INFO  e.a.m.MeetingsappApplication - No active profile set, falling back to default profiles: default
+2019-05-09 09:30:19.008 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-05-09 09:30:19.319 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 294ms. Found 3 repository interfaces.
+2019-05-09 09:30:19.930 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$e7d20659] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-05-09 09:30:20.495 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 10080 (http)
+2019-05-09 09:30:20.526 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-10080"]
+2019-05-09 09:30:20.552 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-05-09 09:30:20.552 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-05-09 09:30:20.796 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-05-09 09:30:20.797 [main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 4295 ms
+2019-05-09 09:30:21.105 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-05-09 09:30:21.172 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-05-09 09:30:21.254 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
 	name: default
 	...]
-2019-05-08 16:18:00.707 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.3.9.Final}
-2019-05-08 16:18:00.711 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
-2019-05-08 16:18:00.990 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
-2019-05-08 16:18:01.210 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MariaDB103Dialect
-2019-05-08 16:18:02.365 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2019-05-08 16:18:03.050 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2019-05-08 16:18:03.228 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
-2019-05-08 16:18:03.414 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
-2019-05-08 16:18:03.645 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
-2019-05-08 16:18:03.672 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
-2019-05-08 16:18:03.712 [main] INFO  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
-2019-05-08 16:18:03.948 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: createUsingPOST_1
-2019-05-08 16:18:03.952 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: deleteUsingDELETE_1
-2019-05-08 16:18:03.955 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getByIdUsingGET_1
-2019-05-08 16:18:03.958 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: updateUsingPUT_1
-2019-05-08 16:18:03.984 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-10080"]
-2019-05-08 16:18:04.016 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 10080 (http) with context path ''
-2019-05-08 16:18:04.020 [main] INFO  e.a.m.MeetingsappApplication - Started MeetingsappApplication in 8.237 seconds (JVM running for 11.536)
-2019-05-08 16:18:26.104 [http-nio-10080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2019-05-08 16:18:26.106 [http-nio-10080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2019-05-08 16:18:26.139 [http-nio-10080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 32 ms
-2019-05-08 16:19:07.177 [http-nio-10080-exec-10] INFO  e.arobs.meetingsapp.user.UserService - Successfully created User(id=252, firstName=Laura, lastName=Budai)
-2019-05-08 16:39:53.568 [main] INFO  e.a.m.MeetingsappApplication - Starting MeetingsappApplication on laptoparbs697 with PID 14412 (C:\Users\raluca.martin\Internship\MeetingsApp\target\classes started by raluca.martin in C:\Users\raluca.martin\Internship\MeetingsApp)
-2019-05-08 16:39:53.576 [main] INFO  e.a.m.MeetingsappApplication - No active profile set, falling back to default profiles: default
-2019-05-08 16:39:56.129 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
-2019-05-08 16:39:56.250 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 105ms. Found 3 repository interfaces.
-2019-05-08 16:39:56.759 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$e7f41229] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2019-05-08 16:39:57.385 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 10080 (http)
-2019-05-08 16:39:57.410 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-10080"]
-2019-05-08 16:39:57.427 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2019-05-08 16:39:57.428 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
-2019-05-08 16:39:57.645 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2019-05-08 16:39:57.645 [main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 3945 ms
-2019-05-08 16:39:57.865 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2019-05-08 16:39:57.942 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2019-05-08 16:39:58.014 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+2019-05-09 09:30:21.405 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.3.9.Final}
+2019-05-09 09:30:21.407 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2019-05-09 09:30:21.663 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-05-09 09:30:21.887 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MariaDB103Dialect
+2019-05-09 09:30:23.143 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-05-09 09:30:23.944 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-05-09 09:30:24.108 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-05-09 09:30:24.372 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-05-09 09:30:24.642 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+2019-05-09 09:30:24.672 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2019-05-09 09:30:24.708 [main] INFO  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+2019-05-09 09:30:24.962 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: createUsingPOST_1
+2019-05-09 09:30:24.965 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: deleteUsingDELETE_1
+2019-05-09 09:30:24.968 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getByIdUsingGET_1
+2019-05-09 09:30:24.972 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: updateUsingPUT_1
+2019-05-09 09:30:24.979 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: createUsingPOST_2
+2019-05-09 09:30:24.982 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: deleteUsingDELETE_2
+2019-05-09 09:30:24.986 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getByIdUsingGET_2
+2019-05-09 09:30:24.990 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: updateUsingPUT_2
+2019-05-09 09:30:25.016 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-10080"]
+2019-05-09 09:30:25.047 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 10080 (http) with context path ''
+2019-05-09 09:30:25.052 [main] INFO  e.a.m.MeetingsappApplication - Started MeetingsappApplication in 9.861 seconds (JVM running for 14.026)
+2019-05-09 09:30:45.527 [http-nio-10080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-05-09 09:30:45.529 [http-nio-10080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2019-05-09 09:30:45.553 [http-nio-10080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 23 ms
+2019-05-09 09:31:27.102 [http-nio-10080-exec-6] INFO  e.arobs.meetingsapp.user.UserService - The meeting : Meeting(id=102, date=2019-03-18T06:30:55.218, title=string, location=string) was successfully created 
+2019-05-09 09:41:30.030 [main] INFO  e.a.m.MeetingsappApplication - Starting MeetingsappApplication on laptoparbs697 with PID 1668 (C:\Users\raluca.martin\Internship\MeetingsApp\target\classes started by raluca.martin in C:\Users\raluca.martin\Internship\MeetingsApp)
+2019-05-09 09:41:30.040 [main] INFO  e.a.m.MeetingsappApplication - No active profile set, falling back to default profiles: default
+2019-05-09 09:41:34.953 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-05-09 09:41:35.293 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 261ms. Found 3 repository interfaces.
+2019-05-09 09:41:36.671 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$5bd1705] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-05-09 09:41:37.629 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 10080 (http)
+2019-05-09 09:41:37.656 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-10080"]
+2019-05-09 09:41:37.677 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-05-09 09:41:37.678 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-05-09 09:41:37.970 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-05-09 09:41:37.970 [main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 7768 ms
+2019-05-09 09:41:38.249 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-05-09 09:41:38.318 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-05-09 09:41:38.404 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
 	name: default
 	...]
-2019-05-08 16:39:58.168 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.3.9.Final}
-2019-05-08 16:39:58.173 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
-2019-05-08 16:39:58.443 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
-2019-05-08 16:39:58.658 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MariaDB103Dialect
-2019-05-08 16:39:59.889 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2019-05-08 16:40:00.229 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'participantController' defined in file [C:\Users\raluca.martin\Internship\MeetingsApp\target\classes\edu\arobs\meetingsapp\Participant\ParticipantController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'participantService' defined in file [C:\Users\raluca.martin\Internship\MeetingsApp\target\classes\edu\arobs\meetingsapp\Participant\ParticipantService.class]: Unsatisfied dependency expressed through constructor parameter 1; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'edu.arobs.meetingsapp.Participant.ParticipantModelMapper' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
-2019-05-08 16:40:00.230 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2019-05-08 16:40:00.234 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2019-05-08 16:40:00.246 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2019-05-08 16:40:00.248 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
-2019-05-08 16:40:00.263 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
-
-Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2019-05-08 16:40:00.494 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
-
-***************************
-APPLICATION FAILED TO START
-***************************
-
-Description:
-
-Parameter 1 of constructor in edu.arobs.meetingsapp.Participant.ParticipantService required a bean of type 'edu.arobs.meetingsapp.Participant.ParticipantModelMapper' that could not be found.
-
-
-Action:
-
-Consider defining a bean of type 'edu.arobs.meetingsapp.Participant.ParticipantModelMapper' in your configuration.
-
-2019-05-08 16:40:59.195 [main] INFO  e.a.m.MeetingsappApplication - Starting MeetingsappApplication on laptoparbs697 with PID 12680 (C:\Users\raluca.martin\Internship\MeetingsApp\target\classes started by raluca.martin in C:\Users\raluca.martin\Internship\MeetingsApp)
-2019-05-08 16:40:59.202 [main] INFO  e.a.m.MeetingsappApplication - No active profile set, falling back to default profiles: default
-2019-05-08 16:41:02.152 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
-2019-05-08 16:41:02.262 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 100ms. Found 3 repository interfaces.
-2019-05-08 16:41:02.752 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$30470332] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2019-05-08 16:41:03.264 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 10080 (http)
-2019-05-08 16:41:03.285 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-10080"]
-2019-05-08 16:41:03.303 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2019-05-08 16:41:03.303 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
-2019-05-08 16:41:03.533 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2019-05-08 16:41:03.534 [main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 4231 ms
-2019-05-08 16:41:03.727 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2019-05-08 16:41:03.792 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2019-05-08 16:41:03.874 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+2019-05-09 09:41:38.553 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.3.9.Final}
+2019-05-09 09:41:38.556 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2019-05-09 09:41:38.783 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-05-09 09:41:39.047 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MariaDB103Dialect
+2019-05-09 09:41:40.291 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-05-09 09:41:41.043 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-05-09 09:41:41.324 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-05-09 09:41:41.710 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-05-09 09:41:42.197 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+2019-05-09 09:41:42.263 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2019-05-09 09:41:42.356 [main] INFO  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+2019-05-09 09:41:42.812 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: createUsingPOST_1
+2019-05-09 09:41:42.825 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getByIdUsingGET_1
+2019-05-09 09:41:42.833 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: updateUsingPUT_1
+2019-05-09 09:41:42.846 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: createUsingPOST_2
+2019-05-09 09:41:42.857 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: deleteUsingDELETE_1
+2019-05-09 09:41:42.862 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getByIdUsingGET_2
+2019-05-09 09:41:42.872 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: updateUsingPUT_2
+2019-05-09 09:41:42.950 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-10080"]
+2019-05-09 09:41:43.013 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 10080 (http) with context path ''
+2019-05-09 09:41:43.023 [main] INFO  e.a.m.MeetingsappApplication - Started MeetingsappApplication in 13.931 seconds (JVM running for 17.141)
+2019-05-09 09:41:55.261 [http-nio-10080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-05-09 09:41:55.263 [http-nio-10080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2019-05-09 09:41:55.276 [http-nio-10080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 13 ms
+2019-05-09 09:45:11.625 [main] INFO  e.a.m.MeetingsappApplication - Starting MeetingsappApplication on laptoparbs697 with PID 14360 (C:\Users\raluca.martin\Internship\MeetingsApp\target\classes started by raluca.martin in C:\Users\raluca.martin\Internship\MeetingsApp)
+2019-05-09 09:45:11.630 [main] INFO  e.a.m.MeetingsappApplication - No active profile set, falling back to default profiles: default
+2019-05-09 09:45:13.816 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-05-09 09:45:13.928 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 87ms. Found 3 repository interfaces.
+2019-05-09 09:45:14.391 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$119e40b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-05-09 09:45:14.877 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 10080 (http)
+2019-05-09 09:45:14.897 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-10080"]
+2019-05-09 09:45:14.913 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-05-09 09:45:14.914 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-05-09 09:45:15.158 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-05-09 09:45:15.158 [main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 3386 ms
+2019-05-09 09:45:15.391 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-05-09 09:45:15.447 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-05-09 09:45:15.509 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
 	name: default
 	...]
-2019-05-08 16:41:03.989 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.3.9.Final}
-2019-05-08 16:41:03.992 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
-2019-05-08 16:41:04.182 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
-2019-05-08 16:41:04.386 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MariaDB103Dialect
-2019-05-08 16:41:05.456 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2019-05-08 16:41:06.149 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2019-05-08 16:41:06.339 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
-2019-05-08 16:41:06.537 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
-2019-05-08 16:41:06.787 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
-2019-05-08 16:41:06.818 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
-2019-05-08 16:41:06.856 [main] INFO  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
-2019-05-08 16:41:07.100 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: createUsingPOST_1
-2019-05-08 16:41:07.107 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: createUsingPOST_2
-2019-05-08 16:41:07.110 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: deleteUsingDELETE_1
-2019-05-08 16:41:07.113 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getByIdUsingGET_1
-2019-05-08 16:41:07.117 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: updateUsingPUT_1
-2019-05-08 16:41:07.145 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-10080"]
-2019-05-08 16:41:07.180 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 10080 (http) with context path ''
-2019-05-08 16:41:07.187 [main] INFO  e.a.m.MeetingsappApplication - Started MeetingsappApplication in 8.858 seconds (JVM running for 12.139)
-2019-05-08 16:41:13.370 [http-nio-10080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2019-05-08 16:41:13.371 [http-nio-10080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2019-05-08 16:41:13.384 [http-nio-10080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 13 ms
-2019-05-08 16:42:35.142 [http-nio-10080-exec-8] INFO  e.arobs.meetingsapp.user.UserService - Successfully created Participant(id=1, idMeeting=52, idUser=null)
-2019-05-08 16:45:24.531 [main] INFO  e.a.m.MeetingsappApplication - Starting MeetingsappApplication on laptoparbs697 with PID 13556 (C:\Users\raluca.martin\Internship\MeetingsApp\target\classes started by raluca.martin in C:\Users\raluca.martin\Internship\MeetingsApp)
-2019-05-08 16:45:24.555 [main] INFO  e.a.m.MeetingsappApplication - No active profile set, falling back to default profiles: default
-2019-05-08 16:45:28.026 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
-2019-05-08 16:45:28.168 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 128ms. Found 3 repository interfaces.
-2019-05-08 16:45:29.037 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$1bdcb27] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2019-05-08 16:45:29.656 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 10080 (http)
-2019-05-08 16:45:29.681 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-10080"]
-2019-05-08 16:45:29.699 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2019-05-08 16:45:29.699 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
-2019-05-08 16:45:29.953 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2019-05-08 16:45:29.953 [main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 5278 ms
-2019-05-08 16:45:30.211 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2019-05-08 16:45:30.265 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2019-05-08 16:45:30.339 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+2019-05-09 09:45:15.613 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.3.9.Final}
+2019-05-09 09:45:15.616 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2019-05-09 09:45:15.784 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-05-09 09:45:16.020 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MariaDB103Dialect
+2019-05-09 09:45:17.066 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-05-09 09:45:17.684 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-05-09 09:45:17.867 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-05-09 09:45:18.112 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-05-09 09:45:18.341 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+2019-05-09 09:45:18.367 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2019-05-09 09:45:18.400 [main] INFO  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+2019-05-09 09:45:18.628 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: createUsingPOST_1
+2019-05-09 09:45:18.631 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: deleteUsingDELETE_1
+2019-05-09 09:45:18.635 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getByIdUsingGET_1
+2019-05-09 09:45:18.638 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: updateUsingPUT_1
+2019-05-09 09:45:18.646 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: createUsingPOST_2
+2019-05-09 09:45:18.650 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: deleteUsingDELETE_2
+2019-05-09 09:45:18.653 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getByIdUsingGET_2
+2019-05-09 09:45:18.657 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: updateUsingPUT_2
+2019-05-09 09:45:18.679 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-10080"]
+2019-05-09 09:45:18.713 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 10080 (http) with context path ''
+2019-05-09 09:45:18.718 [main] INFO  e.a.m.MeetingsappApplication - Started MeetingsappApplication in 8.224 seconds (JVM running for 11.304)
+2019-05-09 09:45:34.614 [http-nio-10080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-05-09 09:45:34.616 [http-nio-10080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2019-05-09 09:45:34.633 [http-nio-10080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 17 ms
+2019-05-09 09:56:24.964 [main] INFO  e.a.m.MeetingsappApplication - Starting MeetingsappApplication on laptoparbs697 with PID 9380 (C:\Users\raluca.martin\Internship\MeetingsApp\target\classes started by raluca.martin in C:\Users\raluca.martin\Internship\MeetingsApp)
+2019-05-09 09:56:24.972 [main] INFO  e.a.m.MeetingsappApplication - No active profile set, falling back to default profiles: default
+2019-05-09 09:56:29.588 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-05-09 09:56:29.859 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 238ms. Found 3 repository interfaces.
+2019-05-09 09:56:31.114 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$ddcfe10f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-05-09 09:56:32.230 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 10080 (http)
+2019-05-09 09:56:32.275 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-10080"]
+2019-05-09 09:56:32.306 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-05-09 09:56:32.307 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-05-09 09:56:32.707 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-05-09 09:56:32.707 [main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 7584 ms
+2019-05-09 09:56:33.111 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-05-09 09:56:33.219 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-05-09 09:56:33.366 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
 	name: default
 	...]
-2019-05-08 16:45:30.461 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.3.9.Final}
-2019-05-08 16:45:30.464 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
-2019-05-08 16:45:30.734 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
-2019-05-08 16:45:30.948 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MariaDB103Dialect
-2019-05-08 16:45:32.109 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2019-05-08 16:45:32.815 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2019-05-08 16:45:32.995 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
-2019-05-08 16:45:33.209 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
-2019-05-08 16:45:33.432 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
-2019-05-08 16:45:33.480 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
-2019-05-08 16:45:33.527 [main] INFO  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
-2019-05-08 16:45:33.821 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: createUsingPOST_1
-2019-05-08 16:45:33.829 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: createUsingPOST_2
-2019-05-08 16:45:33.833 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: deleteUsingDELETE_1
-2019-05-08 16:45:33.838 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getByIdUsingGET_1
-2019-05-08 16:45:33.844 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: updateUsingPUT_1
-2019-05-08 16:45:33.891 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-10080"]
-2019-05-08 16:45:33.934 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 10080 (http) with context path ''
-2019-05-08 16:45:33.945 [main] INFO  e.a.m.MeetingsappApplication - Started MeetingsappApplication in 10.622 seconds (JVM running for 14.234)
-2019-05-08 16:47:32.352 [http-nio-10080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2019-05-08 16:47:32.353 [http-nio-10080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2019-05-08 16:47:32.364 [http-nio-10080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 11 ms
-2019-05-08 16:47:52.373 [http-nio-10080-exec-9] INFO  e.arobs.meetingsapp.user.UserService - Successfully created Participant(id=52, idMeeting=52, idUser=52)
-2019-05-08 16:50:46.909 [main] INFO  e.a.m.MeetingsappApplication - Starting MeetingsappApplication on laptoparbs697 with PID 7504 (C:\Users\raluca.martin\Internship\MeetingsApp\target\classes started by raluca.martin in C:\Users\raluca.martin\Internship\MeetingsApp)
-2019-05-08 16:50:46.914 [main] INFO  e.a.m.MeetingsappApplication - No active profile set, falling back to default profiles: default
-2019-05-08 16:50:50.229 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
-2019-05-08 16:50:50.403 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 156ms. Found 3 repository interfaces.
-2019-05-08 16:50:51.409 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$8eb03969] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2019-05-08 16:50:52.760 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 10080 (http)
-2019-05-08 16:50:52.808 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-10080"]
-2019-05-08 16:50:52.843 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2019-05-08 16:50:52.843 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
-2019-05-08 16:50:53.226 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2019-05-08 16:50:53.226 [main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 6194 ms
-2019-05-08 16:50:53.618 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2019-05-08 16:50:53.857 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2019-05-08 16:50:54.008 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+2019-05-09 09:56:33.534 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.3.9.Final}
+2019-05-09 09:56:33.537 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2019-05-09 09:56:33.774 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-05-09 09:56:34.034 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MariaDB103Dialect
+2019-05-09 09:56:35.375 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-05-09 09:56:36.102 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-05-09 09:56:36.303 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-05-09 09:56:36.531 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-05-09 09:56:36.741 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+2019-05-09 09:56:36.785 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2019-05-09 09:56:36.825 [main] INFO  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+2019-05-09 09:56:37.085 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: createUsingPOST_1
+2019-05-09 09:56:37.090 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: deleteUsingDELETE_1
+2019-05-09 09:56:37.093 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getByIdUsingGET_1
+2019-05-09 09:56:37.099 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: updateUsingPUT_1
+2019-05-09 09:56:37.107 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: createUsingPOST_2
+2019-05-09 09:56:37.110 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: deleteUsingDELETE_2
+2019-05-09 09:56:37.113 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getByIdUsingGET_2
+2019-05-09 09:56:37.118 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: updateUsingPUT_2
+2019-05-09 09:56:37.144 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-10080"]
+2019-05-09 09:56:37.179 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 10080 (http) with context path ''
+2019-05-09 09:56:37.185 [main] INFO  e.a.m.MeetingsappApplication - Started MeetingsappApplication in 13.632 seconds (JVM running for 18.806)
+2019-05-09 09:56:43.562 [http-nio-10080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-05-09 09:56:43.564 [http-nio-10080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2019-05-09 09:56:43.575 [http-nio-10080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 11 ms
+2019-05-09 09:57:05.361 [http-nio-10080-exec-9] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+2019-05-09 09:57:36.511 [http-nio-10080-exec-10] INFO  e.arobs.meetingsapp.user.UserService - The meeting : Meeting(id=152, date=2019-05-09T06:57:19.370, title=somewhere, location=java) was successfully created 
+2019-05-09 10:06:31.529 [main] INFO  e.a.m.MeetingsappApplication - Starting MeetingsappApplication on laptoparbs697 with PID 12992 (C:\Users\raluca.martin\Internship\MeetingsApp\target\classes started by raluca.martin in C:\Users\raluca.martin\Internship\MeetingsApp)
+2019-05-09 10:06:31.548 [main] INFO  e.a.m.MeetingsappApplication - No active profile set, falling back to default profiles: default
+2019-05-09 10:06:33.890 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-05-09 10:06:33.989 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 88ms. Found 3 repository interfaces.
+2019-05-09 10:06:34.556 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$6f33a14e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-05-09 10:06:35.066 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 10080 (http)
+2019-05-09 10:06:35.088 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-10080"]
+2019-05-09 10:06:35.105 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-05-09 10:06:35.106 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-05-09 10:06:35.316 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-05-09 10:06:35.316 [main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 3557 ms
+2019-05-09 10:06:35.576 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-05-09 10:06:35.669 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-05-09 10:06:35.760 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
 	name: default
 	...]
-2019-05-08 16:50:54.221 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.3.9.Final}
-2019-05-08 16:50:54.226 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
-2019-05-08 16:50:54.658 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
-2019-05-08 16:50:55.053 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MariaDB103Dialect
-2019-05-08 16:50:57.055 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2019-05-08 16:50:58.370 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2019-05-08 16:50:58.814 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
-2019-05-08 16:50:59.394 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
-2019-05-08 16:50:59.873 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
-2019-05-08 16:50:59.919 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
-2019-05-08 16:50:59.984 [main] INFO  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
-2019-05-08 16:51:00.485 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: createUsingPOST_1
-2019-05-08 16:51:00.496 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getByIdUsingGET_1
-2019-05-08 16:51:00.520 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: createUsingPOST_2
-2019-05-08 16:51:00.529 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: deleteUsingDELETE_1
-2019-05-08 16:51:00.536 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getByIdUsingGET_2
-2019-05-08 16:51:00.552 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: updateUsingPUT_1
-2019-05-08 16:51:00.588 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-10080"]
-2019-05-08 16:51:00.640 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 10080 (http) with context path ''
-2019-05-08 16:51:00.647 [main] INFO  e.a.m.MeetingsappApplication - Started MeetingsappApplication in 14.881 seconds (JVM running for 20.202)
-2019-05-08 16:52:51.375 [http-nio-10080-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2019-05-08 16:52:51.376 [http-nio-10080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2019-05-08 16:52:51.389 [http-nio-10080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 12 ms
-2019-05-08 16:59:17.807 [main] INFO  e.a.m.MeetingsappApplication - Starting MeetingsappApplication on laptoparbs697 with PID 9068 (C:\Users\raluca.martin\Internship\MeetingsApp\target\classes started by raluca.martin in C:\Users\raluca.martin\Internship\MeetingsApp)
-2019-05-08 16:59:17.816 [main] INFO  e.a.m.MeetingsappApplication - No active profile set, falling back to default profiles: default
-2019-05-08 16:59:20.833 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
-2019-05-08 16:59:20.938 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 94ms. Found 3 repository interfaces.
-2019-05-08 16:59:21.506 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$146095a9] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2019-05-08 16:59:22.039 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 10080 (http)
-2019-05-08 16:59:22.060 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-10080"]
-2019-05-08 16:59:22.076 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2019-05-08 16:59:22.077 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
-2019-05-08 16:59:22.264 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2019-05-08 16:59:22.264 [main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 4280 ms
-2019-05-08 16:59:22.455 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2019-05-08 16:59:22.534 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2019-05-08 16:59:22.595 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+2019-05-09 10:06:35.866 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.3.9.Final}
+2019-05-09 10:06:35.868 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2019-05-09 10:06:36.051 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-05-09 10:06:36.255 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MariaDB103Dialect
+2019-05-09 10:06:37.390 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-05-09 10:06:38.426 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-05-09 10:06:38.612 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-05-09 10:06:38.817 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-05-09 10:06:39.079 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+2019-05-09 10:06:39.104 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2019-05-09 10:06:39.140 [main] INFO  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+2019-05-09 10:06:39.392 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: createUsingPOST_1
+2019-05-09 10:06:39.395 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: deleteUsingDELETE_1
+2019-05-09 10:06:39.398 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getAllUsingGET_1
+2019-05-09 10:06:39.403 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getByIdUsingGET_1
+2019-05-09 10:06:39.408 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: updateUsingPUT_1
+2019-05-09 10:06:39.416 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: createUsingPOST_2
+2019-05-09 10:06:39.419 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: deleteUsingDELETE_2
+2019-05-09 10:06:39.422 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getAllUsingGET_2
+2019-05-09 10:06:39.426 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getByIdUsingGET_2
+2019-05-09 10:06:39.429 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: updateUsingPUT_2
+2019-05-09 10:06:39.454 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-10080"]
+2019-05-09 10:06:39.490 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 10080 (http) with context path ''
+2019-05-09 10:06:39.494 [main] INFO  e.a.m.MeetingsappApplication - Started MeetingsappApplication in 9.291 seconds (JVM running for 13.648)
+2019-05-09 10:07:04.234 [http-nio-10080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-05-09 10:07:04.236 [http-nio-10080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2019-05-09 10:07:04.249 [http-nio-10080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 13 ms
+2019-05-09 10:07:52.177 [http-nio-10080-exec-9] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+2019-05-09 10:08:38.937 [http-nio-10080-exec-1] INFO  e.arobs.meetingsapp.user.UserService - Successfully created Participant(id=102, idMeeting=102, idUser=202)
+2019-05-09 10:08:40.443 [http-nio-10080-exec-2] INFO  e.arobs.meetingsapp.user.UserService - Successfully created Participant(id=103, idMeeting=102, idUser=202)
+2019-05-09 10:18:48.214 [main] INFO  e.a.m.MeetingsappApplication - Starting MeetingsappApplication on laptoparbs697 with PID 1864 (C:\Users\raluca.martin\Internship\MeetingsApp\target\classes started by raluca.martin in C:\Users\raluca.martin\Internship\MeetingsApp)
+2019-05-09 10:18:48.222 [main] INFO  e.a.m.MeetingsappApplication - No active profile set, falling back to default profiles: default
+2019-05-09 10:18:51.575 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-05-09 10:18:51.728 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 135ms. Found 3 repository interfaces.
+2019-05-09 10:18:52.586 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$a345dfca] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-05-09 10:18:53.221 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 10080 (http)
+2019-05-09 10:18:53.247 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-10080"]
+2019-05-09 10:18:53.268 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-05-09 10:18:53.269 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-05-09 10:18:53.540 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-05-09 10:18:53.541 [main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 5197 ms
+2019-05-09 10:18:53.757 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-05-09 10:18:53.812 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-05-09 10:18:53.888 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
 	name: default
 	...]
-2019-05-08 16:59:22.685 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.3.9.Final}
-2019-05-08 16:59:22.687 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
-2019-05-08 16:59:22.851 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
-2019-05-08 16:59:23.059 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MariaDB103Dialect
-2019-05-08 16:59:24.150 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2019-05-08 16:59:24.840 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2019-05-08 16:59:25.003 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
-2019-05-08 16:59:25.179 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
-2019-05-08 16:59:25.368 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
-2019-05-08 16:59:25.390 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
-2019-05-08 16:59:25.432 [main] INFO  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
-2019-05-08 16:59:25.688 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: createUsingPOST_1
-2019-05-08 16:59:25.692 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getByIdUsingGET_1
-2019-05-08 16:59:25.695 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: updateUsingPUT_1
-2019-05-08 16:59:25.703 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: createUsingPOST_2
-2019-05-08 16:59:25.710 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: deleteUsingDELETE_1
-2019-05-08 16:59:25.722 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getByIdUsingGET_2
-2019-05-08 16:59:25.731 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: updateUsingPUT_2
-2019-05-08 16:59:25.767 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-10080"]
-2019-05-08 16:59:25.807 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 10080 (http) with context path ''
-2019-05-08 16:59:25.812 [main] INFO  e.a.m.MeetingsappApplication - Started MeetingsappApplication in 8.823 seconds (JVM running for 12.611)
-2019-05-08 16:59:35.135 [http-nio-10080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2019-05-08 16:59:35.136 [http-nio-10080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2019-05-08 16:59:35.150 [http-nio-10080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 14 ms
-2019-05-08 17:03:36.088 [main] INFO  e.a.m.MeetingsappApplication - Starting MeetingsappApplication on laptoparbs697 with PID 1472 (C:\Users\raluca.martin\Internship\MeetingsApp\target\classes started by raluca.martin in C:\Users\raluca.martin\Internship\MeetingsApp)
-2019-05-08 17:03:36.110 [main] INFO  e.a.m.MeetingsappApplication - No active profile set, falling back to default profiles: default
-2019-05-08 17:03:40.248 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
-2019-05-08 17:03:40.554 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 244ms. Found 3 repository interfaces.
-2019-05-08 17:03:41.843 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$3a688daf] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2019-05-08 17:03:42.991 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 10080 (http)
-2019-05-08 17:03:43.042 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-10080"]
-2019-05-08 17:03:43.098 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2019-05-08 17:03:43.099 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
-2019-05-08 17:03:43.580 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2019-05-08 17:03:43.581 [main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 7238 ms
-2019-05-08 17:03:44.268 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2019-05-08 17:03:44.394 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2019-05-08 17:03:44.562 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
-	name: default
-	...]
-2019-05-08 17:03:44.778 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.3.9.Final}
-2019-05-08 17:03:44.784 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
-2019-05-08 17:03:45.141 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
-2019-05-08 17:03:45.709 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MariaDB103Dialect
-2019-05-08 17:03:48.283 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2019-05-08 17:03:49.810 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2019-05-08 17:03:50.187 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
-2019-05-08 17:03:50.555 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
-2019-05-08 17:03:50.983 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
-2019-05-08 17:03:51.028 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
-2019-05-08 17:03:51.112 [main] INFO  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
-2019-05-08 17:03:51.558 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: createUsingPOST_1
-2019-05-08 17:03:51.576 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: deleteUsingDELETE_1
-2019-05-08 17:03:51.584 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getByIdUsingGET_1
-2019-05-08 17:03:51.595 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: updateUsingPUT_1
-2019-05-08 17:03:51.610 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: createUsingPOST_2
-2019-05-08 17:03:51.618 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: deleteUsingDELETE_2
-2019-05-08 17:03:51.623 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getByIdUsingGET_2
-2019-05-08 17:03:51.630 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: updateUsingPUT_2
-2019-05-08 17:03:51.669 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-10080"]
-2019-05-08 17:03:51.711 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 10080 (http) with context path ''
-2019-05-08 17:03:51.718 [main] INFO  e.a.m.MeetingsappApplication - Started MeetingsappApplication in 17.211 seconds (JVM running for 21.461)
-2019-05-08 17:04:50.530 [http-nio-10080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2019-05-08 17:04:50.532 [http-nio-10080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2019-05-08 17:04:50.551 [http-nio-10080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 19 ms
-2019-05-08 17:05:27.087 [http-nio-10080-exec-6] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Participant id=52 does not exist] with root cause
-java.lang.IllegalArgumentException: Participant id=52 does not exist
-	at edu.arobs.meetingsapp.Participant.ParticipantService.lambda$delete$2(ParticipantService.java:56)
-	at java.base/java.util.Optional.orElseThrow(Optional.java:408)
-	at edu.arobs.meetingsapp.Participant.ParticipantService.delete(ParticipantService.java:56)
-	at edu.arobs.meetingsapp.Participant.ParticipantController.delete(ParticipantController.java:38)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:189)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:892)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005)
-	at org.springframework.web.servlet.FrameworkServlet.doDelete(FrameworkServlet.java:930)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:666)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:200)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:834)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1415)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-	at java.base/java.lang.Thread.run(Thread.java:834)
+2019-05-09 10:18:54.025 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.3.9.Final}
+2019-05-09 10:18:54.027 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2019-05-09 10:18:54.247 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-05-09 10:18:54.478 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MariaDB103Dialect
+2019-05-09 10:18:55.582 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-05-09 10:18:56.247 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-05-09 10:18:56.419 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-05-09 10:18:56.615 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-05-09 10:18:56.874 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+2019-05-09 10:18:56.900 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2019-05-09 10:18:56.939 [main] INFO  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+2019-05-09 10:18:57.189 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: createUsingPOST_1
+2019-05-09 10:18:57.193 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: deleteUsingDELETE_1
+2019-05-09 10:18:57.197 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getAllUsingGET_1
+2019-05-09 10:18:57.200 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getByIdUsingGET_1
+2019-05-09 10:18:57.205 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: updateUsingPUT_1
+2019-05-09 10:18:57.213 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: createUsingPOST_2
+2019-05-09 10:18:57.216 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: deleteUsingDELETE_2
+2019-05-09 10:18:57.219 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getAllUsingGET_2
+2019-05-09 10:18:57.223 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getByIdUsingGET_2
+2019-05-09 10:18:57.225 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: updateUsingPUT_2
+2019-05-09 10:18:57.254 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-10080"]
+2019-05-09 10:18:57.289 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 10080 (http) with context path ''
+2019-05-09 10:18:57.295 [main] INFO  e.a.m.MeetingsappApplication - Started MeetingsappApplication in 10.21 seconds (JVM running for 13.491)

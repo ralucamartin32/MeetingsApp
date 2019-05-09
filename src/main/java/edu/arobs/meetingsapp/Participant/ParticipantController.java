@@ -1,7 +1,11 @@
 package edu.arobs.meetingsapp.Participant;
 
+import edu.arobs.meetingsapp.meeting.MeetingDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.Part;
+import java.util.List;
 
 @RestController
 @RequestMapping("/participants")
@@ -36,5 +40,12 @@ public class ParticipantController {
     @ResponseBody
     public ParticipantDTO delete(@RequestParam(required = true) Long id) {
         return participantService.delete(id);
+    }
+
+
+    @GetMapping("/getAll")
+    @ResponseBody
+    public List<ParticipantDTO> getAll(){
+        return participantService.getAll();
     }
 }
