@@ -1,5 +1,11 @@
 package edu.arobs.meetingsapp.meeting;
 
+import edu.arobs.meetingsapp.Participant.Participant;
+import edu.arobs.meetingsapp.Participant.ParticipantDTO;
+import edu.arobs.meetingsapp.Participant.ParticipantRepository;
+import edu.arobs.meetingsapp.user.User;
+import edu.arobs.meetingsapp.user.UserDTO;
+import edu.arobs.meetingsapp.user.UserRepository;
 import edu.arobs.meetingsapp.user.UserService;
 import org.modelmapper.ModelMapper;
 import org.slf4j.LoggerFactory;
@@ -14,12 +20,16 @@ public class MeetingService {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(UserService.class);
 
+    private ParticipantRepository participantRepository;
+    private final UserRepository userRepository;
     private final MeetingRepository meetingRepository;
     private final MeetingModelMapper meetingModelMapper;
     private final ModelMapper modelMapper;
 
     @Autowired
-    public MeetingService(MeetingRepository meetingRepository, MeetingModelMapper meetingModelMapper, ModelMapper modelMapper) {
+    public MeetingService(ParticipantRepository participantRepository, UserRepository userRepository, MeetingRepository meetingRepository, MeetingModelMapper meetingModelMapper, ModelMapper modelMapper) {
+        this.participantRepository = participantRepository;
+        this.userRepository = userRepository;
         this.meetingRepository = meetingRepository;
         this.meetingModelMapper = meetingModelMapper;
         this.modelMapper = modelMapper;
@@ -33,9 +43,25 @@ public class MeetingService {
         Meeting m = meetingRepository.save(meeting);
         LOGGER.info("The meeting : " + meeting + " was successfully created ");
         MeetingDTO m1 = new MeetingDTO();
-        modelMapper.map(m,m1);
+        modelMapper.map(m, m1);
         return m1;
 
+    }
+
+    public ParticipantDTO addParticipant(Long idMeeting, Long idUser) {
+        User user = userRepository.findById(idUser)
+                .orElseThrow(() -> new IllegalArgumentException(String.format("User id=%d does not exist", idUser)));
+        Meeting meeting = meetingRepository.findById(idMeeting)
+                .orElseThrow(() -> new IllegalArgumentException(String.format("Meeting id=%d does not exist", idMeeting)));
+        Participant newParticipant = meeting.addParticipant(user);
+        System.out.println(newParticipant);
+        newParticipant.setId(null);
+        System.out.println("CEVA");
+        Participant p = participantRepository.save(newParticipant);
+        System.out.println(p);
+        ParticipantDTO participantDTO = new ParticipantDTO();
+        modelMapper.map(p, participantDTO);
+        return  participantDTO;
     }
 //    public MeetingDTO create(MeetingDTO meetingDTO) {
 //
@@ -127,4 +153,5 @@ public class MeetingService {
 //        return meetingDTOS;
 //
 //    }
+
 }

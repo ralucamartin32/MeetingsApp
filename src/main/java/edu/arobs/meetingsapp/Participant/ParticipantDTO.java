@@ -7,6 +7,6 @@ import lombok.Setter;
 @Getter
 public class ParticipantDTO {
 
-    private Long idMeeting;
-    private Long idUser;
+//    private Long idMeeting;
+//    private Long idUser;
 }
