@@ -1,10 +1,9 @@
 package edu.arobs.meetingsapp.user;
-import edu.arobs.meetingsapp.Participant.Participant;
-import io.swagger.annotations.ApiModelProperty;
-import  lombok.*;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.NaturalId;
-import org.hibernate.annotations.NaturalIdCache;
+
+import edu.arobs.meetingsapp.TimeSetter.TimeSetter;
+import edu.arobs.meetingsapp.proposal.Proposal;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -13,37 +12,30 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "user")
-@NaturalIdCache
-@Data
+//@Table(name = "user")
 @Getter
 @Setter
-public class User {
+public class User extends TimeSetter {
 
     @Id
-//    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="userSeqGen")
-//    @SequenceGenerator(name = "userSeqGen", sequenceName = "USER_SEQ_GEN")
     @GeneratedValue
     @NotNull
-//    @ApiModelProperty(hidden = true)
-    private Long id;
+    private Integer id;
+    private String fullName;
+    private String email;
+    private String password;
+    private Integer points;
+    private String token;
 
-//    @NaturalId
-    private String firstName;
+    @OneToMany(
+            mappedBy = "user",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<Proposal> proposals = new ArrayList<>();
 
-//    @NaturalId
-    private String lastName;
-
-    @OneToMany(mappedBy = "user",
-                cascade = CascadeType.ALL,
-                orphanRemoval = true)
-    private List<Participant> participants = new ArrayList<>();
-
-    public User(){
-
-    }
-    public User(String firstName, String lastName){
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public void addProposal(Proposal proposal) {
+        proposals.add(proposal);
+        proposal.setUser(this);
     }
 }
