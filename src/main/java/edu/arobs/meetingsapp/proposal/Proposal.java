@@ -2,23 +2,31 @@ package edu.arobs.meetingsapp.proposal;
 
 import edu.arobs.meetingsapp.TimeSetter.TimeSetter;
 import edu.arobs.meetingsapp.user.User;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+enum Difficulty
+{
+    LOW, MEDIUM, HIGH;
+}
 
+enum Type
+{
+    PRESENTATION, PROJECT, CLIENT_DISCUSSION;
+}
 
 @Entity(name = "Proposal")
-//@Table(name = "proposal")
+@Data
 @Setter
 @Getter
 public class Proposal extends TimeSetter {
 
     @Id
-    @GeneratedValue
-    @NotNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -28,18 +36,17 @@ public class Proposal extends TimeSetter {
     private String title;
     private String author;
 
-    private enum Type
-    {
-        PRESENTATION, PROJECT, CLIENT_DISCUSSION;
-    }
+
+    @Enumerated(EnumType.STRING)
+    @Column(length = 50)
+    private Type type;
 
     private Integer maxPersons;
     private String description;
 
-    private enum Difficulty
-    {
-        LOW, MEDIUM, HIGH;
-    }
+    @Enumerated(EnumType.STRING)
+    @Column(length = 50)
+    private Difficulty difficulty;
 
     private String language;
     private String duration;
