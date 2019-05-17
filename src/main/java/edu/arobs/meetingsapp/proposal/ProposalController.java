@@ -1,6 +1,5 @@
 package edu.arobs.meetingsapp.proposal;
 
-import edu.arobs.meetingsapp.user.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -20,8 +19,8 @@ public class ProposalController {
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public ProposalDTO create(@RequestParam(required = true) Integer id, @RequestBody ProposalDTO proposalDTO) {
-        return proposalService.create(id, proposalDTO);
+    public ProposalDTOForCreate create(@RequestParam(required = true) Integer userId, @RequestBody ProposalDTOForCreate proposalDTO) {
+        return proposalService.create(userId, proposalDTO);
     }
 
     @GetMapping("/getById")
@@ -43,9 +42,26 @@ public class ProposalController {
         return proposalService.delete(id);
     }
 
-    @GetMapping("/getByUserId")
+    @GetMapping("/getAll")
     @ResponseBody
-    public List<Proposal> getByUserId(@RequestParam(required = true) Integer id) {
-        return proposalService.getProposalsFromUser(id);
+    public List<ProposalDTO> getAll() {
+        return proposalService.getAllProposals();
+    }
+
+    @GetMapping("/getAllByUserId")
+    @ResponseBody
+    public List<ProposalDTO> getByUserId(@RequestParam(required = true) Integer userId) {
+        return proposalService.getProposalsForUser(userId);
+    }
+
+    @GetMapping("/getAllByYear")
+    @ResponseBody
+    public List<ProposalDTO> getProposalByYear(@RequestParam(required = true) Integer year) {
+        return proposalService.getProposalsByYear(year);
+    }
+
+    @GetMapping("/getAllForUserByYear")
+    public List<ProposalsFromUsersForYearDTO> getProposalsFromUserByYear(@RequestParam(required = true) Integer userId, @RequestParam(required = true) Integer year ){
+        return proposalService.getProposalsFromUserForYear(userId, year);
     }
 }

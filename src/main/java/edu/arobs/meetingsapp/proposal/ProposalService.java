@@ -1,7 +1,8 @@
 package edu.arobs.meetingsapp.proposal;
 
-import com.fasterxml.jackson.databind.annotation.JsonAppend;
-import edu.arobs.meetingsapp.user.*;
+import edu.arobs.meetingsapp.user.User;
+import edu.arobs.meetingsapp.user.UserRepository;
+import edu.arobs.meetingsapp.user.UserService;
 import org.modelmapper.ModelMapper;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
+
 
 @Service
 public class ProposalService {
@@ -21,7 +23,7 @@ public class ProposalService {
     private final ModelMapper modelMapper;
 
     @Autowired
-    public ProposalService(ProposalRepository proposalRepository, UserRepository userRepository,ProposalModelMapper proposalModelMapper, ModelMapper modelMapper) {
+    public ProposalService(ProposalRepository proposalRepository, UserRepository userRepository, ProposalModelMapper proposalModelMapper, ModelMapper modelMapper) {
         this.proposalRepository = proposalRepository;
         this.userRepository = userRepository;
         this.proposalModelMapper = proposalModelMapper;
@@ -29,14 +31,20 @@ public class ProposalService {
     }
 
     @Transactional
-    public ProposalDTO create(Integer userId, ProposalDTO proposalDTO) {
+    public ProposalDTOForCreate create(Integer userId, ProposalDTOForCreate proposalDTO) {
 
         Proposal proposal = new Proposal();
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException(String.format("Proposal id=%d does not exist", userId)));
+        proposal.setUser(user);
         modelMapper.map(proposalDTO, proposal);
+        proposal.setAuthor(user.getFullName());
         proposal.setId(null);
         proposalRepository.save(proposal);
         LOGGER.info("Successfully created " + proposal);
-        return proposalDTO;
+        ProposalDTOForCreate pDTO = new ProposalDTOForCreate();
+        modelMapper.map(proposal, pDTO);
+        return pDTO;
     }
 
     @Transactional
@@ -50,7 +58,7 @@ public class ProposalService {
     }
 
     @Transactional
-    public ProposalDTO update(Integer userId, Integer proposalId, ProposalDTO proposalDTO){
+    public ProposalDTO update(Integer userId, Integer proposalId, ProposalDTO proposalDTO) {
         Proposal proposal = proposalRepository.findById(proposalId)
                 .orElseThrow(() -> new IllegalArgumentException(String.format("Proposal id=%d does not exist", proposalId)));
         User user = userRepository.findById(userId)
@@ -81,13 +89,52 @@ public class ProposalService {
     }
 
     @Transactional
-    public List<Proposal> getProposalsFromUser(Integer userId){
-        Proposal proposal;
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new IllegalArgumentException(String.format("User id=%d does not exist", userId)));
-        proposal = proposalRepository.findByUser(user);
-        List<Proposal> proposals = new ArrayList<>();
-        proposals.add(proposal);
-        return proposals;
+    public List<ProposalDTO> getAllProposals() {
+        List<ProposalDTO> proposalDTOS = new ArrayList<>();
+        ProposalDTO pDTO = new ProposalDTO();
+        for (Proposal p : proposalRepository.findAll()) {
+            modelMapper.map(p, pDTO);
+            proposalDTOS.add(pDTO);
+        }
+
+        return proposalDTOS;
     }
+
+
+    @Transactional
+    public List<ProposalDTO> getProposalsForUser(Integer userId) {
+        List<Proposal> proposals;
+        proposals = proposalRepository.getProposalsForUser(userId);
+
+        return getProposalDTOS(proposals);
+    }
+
+    @Transactional
+    public List<ProposalDTO> getProposalsByYear(Integer year) {
+        List<Proposal> proposals;
+        proposals = proposalRepository.getProposalsByYear(year);
+
+        return getProposalDTOS(proposals);
+    }
+
+    private List<ProposalDTO> getProposalDTOS(List<Proposal> proposals) {
+        ProposalDTO pDTO = new ProposalDTO();
+        List<ProposalDTO> proposalDTOS = new ArrayList<>();
+        for (Proposal p : proposals) {
+            modelMapper.map(p, pDTO);
+            proposalDTOS.add(pDTO);
+        }
+
+        return proposalDTOS;
+    }
+
+    @Transactional
+    public List<ProposalsFromUsersForYearDTO> getProposalsFromUserForYear(Integer userId, Integer year) {
+        List<ProposalsFromUsersForYearDTO> pDTOs;
+
+        pDTOs = proposalRepository.getProposalsFromUserForYear(userId, year);
+        return pDTOs;
+
+    }
+
 }

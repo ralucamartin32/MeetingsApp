@@ -1,5 +1,6 @@
 package edu.arobs.meetingsapp.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import edu.arobs.meetingsapp.TimeSetter.TimeSetter;
 import edu.arobs.meetingsapp.proposal.Proposal;
 import lombok.Data;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @Entity
 @Data
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class User extends TimeSetter {
 
     @Id

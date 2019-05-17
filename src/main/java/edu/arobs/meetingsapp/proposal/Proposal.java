@@ -1,5 +1,6 @@
 package edu.arobs.meetingsapp.proposal;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import edu.arobs.meetingsapp.TimeSetter.TimeSetter;
 import edu.arobs.meetingsapp.user.User;
 import lombok.Data;
@@ -8,6 +9,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 enum Difficulty
 {
@@ -23,7 +25,8 @@ enum Type
 @Data
 @Setter
 @Getter
-public class Proposal extends TimeSetter {
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+public class Proposal extends TimeSetter implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -62,4 +65,5 @@ public class Proposal extends TimeSetter {
     public int hashCode() {
         return 31;
     }
+
 }
