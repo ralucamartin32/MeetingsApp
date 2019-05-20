@@ -1,6 +1,5 @@
 package edu.arobs.meetingsapp.proposal;
 
-import edu.arobs.meetingsapp.user.User;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;

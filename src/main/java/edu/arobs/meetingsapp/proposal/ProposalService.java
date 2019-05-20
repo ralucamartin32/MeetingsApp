@@ -117,6 +117,7 @@ public class ProposalService {
         return getProposalDTOS(proposals);
     }
 
+    @Transactional
     private List<ProposalDTO> getProposalDTOS(List<Proposal> proposals) {
         ProposalDTO pDTO = new ProposalDTO();
         List<ProposalDTO> proposalDTOS = new ArrayList<>();
@@ -131,10 +132,8 @@ public class ProposalService {
     @Transactional
     public List<ProposalsFromUsersForYearDTO> getProposalsFromUserForYear(Integer userId, Integer year) {
         List<ProposalsFromUsersForYearDTO> pDTOs;
-
         pDTOs = proposalRepository.getProposalsFromUserForYear(userId, year);
         return pDTOs;
-
     }
 
 }
