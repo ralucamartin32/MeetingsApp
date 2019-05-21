@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.plaf.basic.BasicTreeUI;
 import java.util.List;
 
 @RestController
@@ -17,7 +18,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping
+    @PostMapping("/register")
     @ResponseStatus(code = HttpStatus.CREATED)
     public UserDTO create(@RequestBody UserDTO userDTO) {
         return userService.create(userDTO);

@@ -2,7 +2,6 @@ package edu.arobs.meetingsapp.proposal;
 
 import edu.arobs.meetingsapp.user.User;
 import edu.arobs.meetingsapp.user.UserRepository;
-import edu.arobs.meetingsapp.user.UserService;
 import org.modelmapper.ModelMapper;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,7 @@ import java.util.List;
 @Service
 public class ProposalService {
 
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(UserService.class);
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(ProposalService.class);
     private final ProposalRepository proposalRepository;
     private final UserRepository userRepository;
     private final ProposalModelMapper proposalModelMapper;
@@ -35,7 +34,7 @@ public class ProposalService {
 
         Proposal proposal = new Proposal();
         User user = userRepository.findById(userId)
-                .orElseThrow(() -> new IllegalArgumentException(String.format("Proposal id=%d does not exist", userId)));
+                .orElseThrow(() -> new IllegalArgumentException(String.format("User id=%d does not exist", userId)));
         proposal.setUser(user);
         modelMapper.map(proposalDTO, proposal);
         proposal.setAuthor(user.getFullName());
