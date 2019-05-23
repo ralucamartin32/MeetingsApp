@@ -19,6 +19,7 @@ public class UserModelMapper {
     public UserDTO fromEntityToDTO(User user) {
 
         UserDTO userDTO = new UserDTO();
+        userDTO.setId(user.getId());
         userDTO.setFullName(user.getFullName());
         userDTO.setEmail(user.getEmail());
         userDTO.setPassword(user.getPassword());

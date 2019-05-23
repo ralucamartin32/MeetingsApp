@@ -117,7 +117,7 @@ public class ProposalService {
     }
 
     @Transactional
-    private List<ProposalDTO> getProposalDTOS(List<Proposal> proposals) {
+    public List<ProposalDTO> getProposalDTOS(List<Proposal> proposals) {
         ProposalDTO pDTO = new ProposalDTO();
         List<ProposalDTO> proposalDTOS = new ArrayList<>();
         for (Proposal p : proposals) {

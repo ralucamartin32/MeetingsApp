@@ -4,7 +4,11 @@ import edu.arobs.meetingsapp.TimeSetter.TimeSetter;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.sql.Date;
+import java.sql.Time;
 import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 enum Type {
     PRESENTATION, PROJECT, CLIENT_DISCUSSION;
@@ -38,8 +42,8 @@ public class EventDetails extends TimeSetter {
     @Column(length = 50)
     private Difficulty difficulty;
 
-    private Timestamp date;
-    private Timestamp time;
+    private Date date;
+    private Time time;
     private Integer maxPersons;
     private String description;
 }

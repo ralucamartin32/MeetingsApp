@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class UserService {
@@ -30,9 +31,13 @@ public class UserService {
 
         User user = userModelMapper.fromDtoToEntity(userDTO);
         user.setId(null);
-        userRepository.save(user);
-        LOGGER.info("Successfully created " + user);
-        return userDTO;
+        User user1 = userRepository.save(user);
+        user1.setToken("usrABC" + user1.getId());
+        User savedUser = userRepository.save(user1);
+        LOGGER.info("Successfully created " + savedUser);
+        UserDTO savedUserDto = new UserDTO();
+        savedUserDto = userModelMapper.fromEntityToDTO(savedUser);
+        return savedUserDto;
     }
 
     @Transactional
@@ -78,5 +83,13 @@ public class UserService {
 
         return userDTOS;
 
+    }
+
+    @Transactional
+    public UserDTO login(String email, String password) {
+        User usrE = userRepository.findByEmailAndPassword(email, password);
+        UserDTO userDTO;
+        userDTO = userModelMapper.fromEntityToDTO(usrE);
+        return userDTO;
     }
 }
