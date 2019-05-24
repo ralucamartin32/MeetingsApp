@@ -2,6 +2,7 @@ package edu.arobs.meetingsapp.event;
 
 import edu.arobs.meetingsapp.TimeSetter.TimeSetter;
 import edu.arobs.meetingsapp.user.User;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -9,7 +10,8 @@ import java.util.Objects;
 
 @Entity
 @Table
-public class Attendees extends TimeSetter {
+@Data
+public class Attendees  {
 
     @EmbeddedId
     private AttendeesId id;
@@ -24,7 +26,7 @@ public class Attendees extends TimeSetter {
 
     private Timestamp registrationDate;
 
-    private Attendees(){}
+    public Attendees(){}
 
     public Attendees(Event event, User user) {
         this.event = event;

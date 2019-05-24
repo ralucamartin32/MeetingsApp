@@ -4,9 +4,14 @@ package edu.arobs.meetingsapp.configuration;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.spi.DocumentationType;
@@ -15,7 +20,11 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @EnableSwagger2
 @org.springframework.context.annotation.Configuration
-public class Configuration {
+@EnableWebMvc
+@ComponentScan
+public class Configuration implements WebMvcConfigurer {
+
+
     @Bean
     public Docket apiTest() {
         return new Docket(DocumentationType.SWAGGER_2).select()
@@ -47,4 +56,8 @@ public class Configuration {
         return new CorsFilter(source);
     }
 
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new GuestInterceptor());
+    }
 }

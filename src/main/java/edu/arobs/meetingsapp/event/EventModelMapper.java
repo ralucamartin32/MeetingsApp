@@ -6,14 +6,20 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class EventModelMapper {
     @Autowired
     private final UserModelMapper userModelMapper ;
 
-    public EventModelMapper(UserModelMapper userModelMapper) {
+    @Autowired
+    private final AttendeesRepository attendeesRepository;
+    public EventModelMapper(UserModelMapper userModelMapper, AttendeesRepository attendeesRepository)
+    {
         this.userModelMapper = userModelMapper;
+        this.attendeesRepository = attendeesRepository;
     }
 
     public EventDetails fromDtoToEntity(EventDTO eventDTO) {
@@ -56,6 +62,8 @@ public class EventModelMapper {
         eventDTO.setDifficulty(eventDetails.getDifficulty());
         eventDTO.setMaxPeople(eventDetails.getMaxPersons());
         eventDTO.setDescription(eventDetails.getDescription());
+
+
 
         return eventDTO;
     }

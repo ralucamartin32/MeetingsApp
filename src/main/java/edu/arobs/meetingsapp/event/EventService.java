@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.sql.Timestamp;
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -22,14 +23,16 @@ public class EventService {
     private final EventRepository eventRepository;
     private final EventDetailsRepository eventDetailsRepository;
     private final UserRepository userRepository;
+    private final AttendeesRepository attendeesRepository;
     private final ModelMapper modelMapper;
     private final EventModelMapper eventModelMapper;
 
     @Autowired
-    public EventService(EventRepository eventRepository, EventDetailsRepository eventDetailsRepository, UserRepository userRepository, ModelMapper modelMapper, EventModelMapper eventModelMapper) {
+    public EventService(EventRepository eventRepository, EventDetailsRepository eventDetailsRepository, UserRepository userRepository, AttendeesRepository attendeesRepository, ModelMapper modelMapper, EventModelMapper eventModelMapper) {
         this.eventRepository = eventRepository;
         this.eventDetailsRepository = eventDetailsRepository;
         this.userRepository = userRepository;
+        this.attendeesRepository = attendeesRepository;
         this.modelMapper = modelMapper;
         this.eventModelMapper = eventModelMapper;
     }
@@ -89,5 +92,38 @@ public class EventService {
         }
 
         return eventDTOS;
+    }
+
+    public List<EventDTO> subscribeAtEvent(Integer eventId, String token) {
+
+        System.out.println("S a apelat subscribeAtEvent");
+        List<EventDTO> eventDTOS = new ArrayList<>();
+        Event eventExists = eventRepository.findById(eventId)
+                .orElseThrow(() -> new IllegalArgumentException((String.format("Event id = %d doesn`t exist", eventId))));
+        EventDTO eDTO;
+        List<Integer> attendeesIds = new ArrayList<>();
+        for (EventDetails e : eventDetailsRepository.findAll()) {
+            if (e.getEvent().equals(eventExists)){
+                Attendees attendees = new Attendees(eventExists, eventExists.getUser());
+                attendees.setRegistrationDate(Timestamp.valueOf(LocalDateTime.now()));
+                attendeesRepository.save(attendees);
+                eDTO = eventModelMapper.fromEntityToDto(e);
+                //attendeesIds.add(attendees.getUser().getId());
+                attendeesIds.add(Integer.valueOf(token.substring(6)));
+                System.out.println("THE TOKEN in subscribeService is "+token.substring(6));
+                eDTO.setAttendanceIds(attendeesIds);
+                eventDTOS.add(eDTO);
+            }
+        }
+
+        return eventDTOS;
+    }
+
+    public EventDTO getById(Integer eventId) {
+        Event eventExists = eventRepository.findById(eventId)
+                .orElseThrow(() -> new IllegalArgumentException((String.format("Event id = %d doesn`t exist", eventId))));
+        EventDetails eventDetails = eventDetailsRepository.findByEvent(eventExists);
+        System.out.println("S a apelat getById");
+        return eventModelMapper.fromEntityToDto(eventDetails);
     }
 }

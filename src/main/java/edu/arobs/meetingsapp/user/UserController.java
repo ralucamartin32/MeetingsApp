@@ -31,10 +31,11 @@ public class UserController {
     public Set<UserDTO> login(@RequestParam(required = true) String email, @RequestParam(required = true) String password){
         return Set.of(userService.login(email, password));
     }
-    @GetMapping("/{id}")
+    @GetMapping("/{userId}")
     @ResponseBody
-    public UserDTO getById(@RequestParam(required = true) Integer id) {
-        return userService.getById(id);
+    public UserDTO getById(@PathVariable Integer userId) {
+
+        return userService.getById(userId);
     }
 
     @PutMapping("/update")

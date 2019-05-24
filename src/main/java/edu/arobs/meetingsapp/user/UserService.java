@@ -44,6 +44,7 @@ public class UserService {
     public UserDTO getById(Integer id) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException(String.format("User id=%d does not exist", id)));
+        System.out.println(user);
         return userModelMapper.fromEntityToDTO(user);
     }
 
