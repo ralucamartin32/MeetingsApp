@@ -17,7 +17,7 @@ public class AttendeesId implements Serializable {
     @Column(name = "user_id")
     private Integer userId;
 
-    private AttendeesId() {
+    public AttendeesId() {
     }
 
     public AttendeesId(Integer eventId, Integer userId) {

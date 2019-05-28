@@ -15,6 +15,7 @@ public class GuestInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest req, HttpServletResponse res,
                              Object handler) throws Exception {
         System.out.println("Called before handler method");
+
         Cookie[] requestCookies = req.getCookies();
         for(Cookie c : requestCookies){
             if(c.getName().equals("token")) {

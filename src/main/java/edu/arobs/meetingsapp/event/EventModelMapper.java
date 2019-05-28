@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class EventModelMapper {
@@ -49,6 +50,11 @@ public class EventModelMapper {
         ZoneId zoneId = ZoneId.systemDefault(); // or: ZoneId.of("Europe/Oslo");
         long epoch = localDateTime.atZone(zoneId).toEpochSecond();
 
+       // List<Attendees> list = attendeesRepository.findAllByEvent_Id(eventDetails.getId());
+
+//        System.out.println("LISTA " + list);
+//        List<Integer> intList = list.stream().map(attendees -> attendees.getUser().getId()).collect(Collectors.toList());
+
         eventDTO.setId(eventDetails.getEvent().getId());
         eventDTO.setUsers(userModelMapper.fromEntityToDTO(eventDetails.getEvent().getUser()));
         eventDTO.setUsersId(eventDetails.getEvent().getUser().getId());
@@ -62,6 +68,7 @@ public class EventModelMapper {
         eventDTO.setDifficulty(eventDetails.getDifficulty());
         eventDTO.setMaxPeople(eventDetails.getMaxPersons());
         eventDTO.setDescription(eventDetails.getDescription());
+     //   eventDTO.setAttendanceIds(intList);
 
 
 

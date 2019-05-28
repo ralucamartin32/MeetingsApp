@@ -15,9 +15,9 @@ import javax.persistence.Id;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class User extends TimeSetter {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Integer id;
     private String fullName;
     private String email;
     private String password;

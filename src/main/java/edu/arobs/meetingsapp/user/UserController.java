@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.swing.plaf.basic.BasicTreeUI;
 import java.util.List;
 import java.util.Set;
@@ -28,7 +29,7 @@ public class UserController {
 
     @GetMapping
     @ResponseBody
-    public Set<UserDTO> login(@RequestParam(required = true) String email, @RequestParam(required = true) String password){
+    public Set<UserDTO> login(@RequestParam(required = true) String email, @RequestParam(required = true) String password,@CookieValue(value = "token" ,defaultValue = "defaultCookieValue") String token, HttpServletRequest request){
         return Set.of(userService.login(email, password));
     }
     @GetMapping("/{userId}")
