@@ -1,10 +1,13 @@
 package edu.arobs.meetingsapp.event;
 
+import edu.arobs.meetingsapp.Feedback.Feedback;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 @RestController
@@ -78,6 +81,15 @@ public class EventController {
     public EventDTO subscribeAtEvent(@PathVariable Integer eventId, @PathVariable Integer userId) {
         System.out.println("Token inside the subscribe Controller " + userId);
         return eventService.subscribeAtEvent(eventId, userId);
+    }
+
+
+    @PatchMapping("/{eventId}")
+    @ResponseBody
+    public EventDTO addFeedback(@PathVariable Integer eventId, @RequestBody Object o ) {
+        System.out.println("Token inside the addFeedback Controller " );
+        LinkedHashMap<String, ArrayList<LinkedHashMap<String,Object>>> feedbacks = (LinkedHashMap<String, ArrayList<LinkedHashMap<String,Object>>>) o;
+        return eventService.addFeedback(eventId, feedbacks.get("feedback"));
     }
 
 }

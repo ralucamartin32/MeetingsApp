@@ -13,6 +13,7 @@ public interface EventDetailsRepository extends CrudRepository<EventDetails, Int
     EventDetails findByEvent(Event event);
     EventDetails findByEventId(Integer eventId);
 
+
     @Query(value = "SELECT * FROM event_details WHERE  date >= :date", nativeQuery = true)
     List<EventDetails> findFutureEventDetails(@Param("date") Date date) ;
 }

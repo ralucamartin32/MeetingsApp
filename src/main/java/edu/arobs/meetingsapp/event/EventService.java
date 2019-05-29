@@ -1,5 +1,7 @@
 package edu.arobs.meetingsapp.event;
 
+import edu.arobs.meetingsapp.Feedback.Feedback;
+import edu.arobs.meetingsapp.Feedback.FeedbackRepository;
 import edu.arobs.meetingsapp.user.User;
 import edu.arobs.meetingsapp.user.UserRepository;
 import org.modelmapper.ModelMapper;
@@ -25,15 +27,17 @@ public class EventService {
     private final AttendeesRepository attendeesRepository;
     private final ModelMapper modelMapper;
     private final EventModelMapper eventModelMapper;
+    private final FeedbackRepository feedbackRepository;
 
     @Autowired
-    public EventService(EventRepository eventRepository, EventDetailsRepository eventDetailsRepository, UserRepository userRepository, AttendeesRepository attendeesRepository, ModelMapper modelMapper, EventModelMapper eventModelMapper) {
+    public EventService(EventRepository eventRepository, EventDetailsRepository eventDetailsRepository, UserRepository userRepository, AttendeesRepository attendeesRepository, ModelMapper modelMapper, EventModelMapper eventModelMapper, FeedbackRepository feedbackRepository) {
         this.eventRepository = eventRepository;
         this.eventDetailsRepository = eventDetailsRepository;
         this.userRepository = userRepository;
         this.attendeesRepository = attendeesRepository;
         this.modelMapper = modelMapper;
         this.eventModelMapper = eventModelMapper;
+        this.feedbackRepository = feedbackRepository;
     }
 
     @Transactional
@@ -43,13 +47,9 @@ public class EventService {
         EventDetails eventDetails;
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException(String.format("User id=%d does not exist", userId)));
-
-
         event.setUser(user);
-
         eventDetails = eventModelMapper.fromDtoToEntity(eventDTO);
         eventDetails.setEvent(event);
-
         event.setId(null);
         eventDetails.setId(null);
         eventRepository.save(event);
@@ -59,8 +59,6 @@ public class EventService {
         EventDTO eventDTO2;
         eventDTO2 = eventModelMapper.fromEntityToDto(eventDetails);
         return eventDTO2;
-
-
     }
 
     @Transactional
@@ -140,8 +138,7 @@ public class EventService {
 //        return eDTO;
 //    }
 
-    @PersistenceContext
-    private EntityManager entityManager;
+
 
     @Transactional
     public EventDTO addParticipant(Integer eventId, String token) {
@@ -223,5 +220,43 @@ public class EventService {
         }
 
         return eDTO;
+    }
+    @PersistenceContext
+    private EntityManager entityManager;
+
+    public EventDTO addFeedback(Integer eventId,  ArrayList<LinkedHashMap<String, Object>> feedback) {
+
+        System.out.println("Entered inside the addFeedback Service");
+
+//        Event eventExists = eventRepository.findById(eventId)
+//                .orElseThrow(() -> new IllegalArgumentException((String.format("Event id = %d doesn`t exist", eventId))));
+        Event eventExists = entityManager.find( Event.class, eventId );
+
+        System.out.println("event exists" + eventExists);
+        List<Feedback> feedbacks = feedbackRepository.findByEvent(eventExists);
+        LinkedHashMap<String, Object> feedback1 = new LinkedHashMap<>();
+        EventDetails eventDetails = eventDetailsRepository.findByEvent(eventExists);
+        EventDTO eventDTO1 = eventModelMapper.fromEntityToDto(eventDetails);
+        for(LinkedHashMap<String, Object>  feedback2 : feedback){
+            System.out.println("INTRU in for");
+            Feedback feedback3 = new Feedback();
+            feedback3.setClarity(feedback2.get("clarity").toString());
+            feedback3.setOriginality(feedback2.get("originality").toString());
+            feedback3.setComplexity(feedback2.get("complexity").toString());
+            feedback3.setEngagement(feedback2.get("engagement").toString());
+            feedback3.setCursive(feedback2.get("cursive").toString());
+
+            feedback3.setEvent(eventExists);
+            feedbackRepository.save(feedback3);
+            eventExists.addFeedback(feedback3);
+
+            feedbacks.add(feedback3);
+            eventDTO1.setFeedback(feedbacks);
+
+        }
+
+
+
+        return eventDTO1;
     }
 }

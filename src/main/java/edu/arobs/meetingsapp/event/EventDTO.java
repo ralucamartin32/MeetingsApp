@@ -1,6 +1,7 @@
 package edu.arobs.meetingsapp.event;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import edu.arobs.meetingsapp.Feedback.Feedback;
 import edu.arobs.meetingsapp.user.UserDTO;
 import lombok.Data;
 
@@ -28,7 +29,7 @@ public class EventDTO {
     private List<Integer> waitingListIds = new ArrayList<>();/////
     private Long timestamp;///
 
-    private List<Feedback> feedback = new ArrayList<>();
+    private List<Feedback> feedback = new ArrayList<Feedback>();
     private UserDTO users;
     private String description;
 
