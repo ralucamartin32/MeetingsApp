@@ -1,6 +1,11 @@
 package edu.arobs.meetingsapp.event;
 
+import edu.arobs.meetingsapp.Feedback.Feedback;
+import edu.arobs.meetingsapp.Feedback.FeedbackDTO;
+import edu.arobs.meetingsapp.Feedback.FeedbackRepository;
 import edu.arobs.meetingsapp.user.UserModelMapper;
+import org.dom4j.rule.Mode;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,10 +22,17 @@ public class EventModelMapper {
 
     @Autowired
     private final AttendeesRepository attendeesRepository;
-    public EventModelMapper(UserModelMapper userModelMapper, AttendeesRepository attendeesRepository)
+
+    @Autowired
+    private final FeedbackRepository feedbackRepository;
+    @Autowired
+    private final ModelMapper modelMapper;
+    public EventModelMapper(UserModelMapper userModelMapper, AttendeesRepository attendeesRepository, FeedbackRepository feedbackRepository, ModelMapper modelMapper)
     {
         this.userModelMapper = userModelMapper;
         this.attendeesRepository = attendeesRepository;
+        this.feedbackRepository = feedbackRepository;
+        this.modelMapper = modelMapper;
     }
 
     public EventDetails fromDtoToEntity(EventDTO eventDTO) {
@@ -50,10 +62,10 @@ public class EventModelMapper {
         ZoneId zoneId = ZoneId.systemDefault(); // or: ZoneId.of("Europe/Oslo");
         long epoch = localDateTime.atZone(zoneId).toEpochSecond();
 
-       // List<Attendees> list = attendeesRepository.findAllByEvent_Id(eventDetails.getId());
+       List<Attendees> list = attendeesRepository.findAllByEvent_Id(eventDetails.getId());
 
 //        System.out.println("LISTA " + list);
-//        List<Integer> intList = list.stream().map(attendees -> attendees.getUser().getId()).collect(Collectors.toList());
+        List<Integer> intList = list.stream().map(attendees -> attendees.getUser().getId()).collect(Collectors.toList());
 
         eventDTO.setId(eventDetails.getEvent().getId());
         eventDTO.setUsers(userModelMapper.fromEntityToDTO(eventDetails.getEvent().getUser()));
@@ -68,7 +80,20 @@ public class EventModelMapper {
         eventDTO.setDifficulty(eventDetails.getDifficulty());
         eventDTO.setMaxPeople(eventDetails.getMaxPersons());
         eventDTO.setDescription(eventDetails.getDescription());
-     //   eventDTO.setAttendanceIds(intList);
+        eventDTO.setAttendanceIds(intList);
+
+        List<Feedback> feedbackList = feedbackRepository.findByEvent(eventDetails.getEvent());
+        List<FeedbackDTO> feedbackDTOList = new ArrayList<>();
+        FeedbackDTO feedbackDTO = new FeedbackDTO();
+        for(Feedback feedback : feedbackList){
+            modelMapper.map(feedback, feedbackDTO);
+            feedbackDTOList.add(feedbackDTO);
+        }
+
+        eventDTO.setFeedback(feedbackDTOList);
+
+
+
 
 
 

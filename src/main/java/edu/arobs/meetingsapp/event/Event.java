@@ -5,13 +5,16 @@ import edu.arobs.meetingsapp.Feedback.Feedback;
 import edu.arobs.meetingsapp.TimeSetter.TimeSetter;
 import edu.arobs.meetingsapp.user.User;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Data
+@Getter
+@Setter
 public class Event extends TimeSetter {
 
 

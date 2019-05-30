@@ -1,6 +1,7 @@
 package edu.arobs.meetingsapp.event;
 
 import edu.arobs.meetingsapp.Feedback.Feedback;
+import edu.arobs.meetingsapp.Feedback.FeedbackDTO;
 import edu.arobs.meetingsapp.Feedback.FeedbackRepository;
 import edu.arobs.meetingsapp.user.User;
 import edu.arobs.meetingsapp.user.UserRepository;
@@ -12,10 +13,12 @@ import org.springframework.stereotype.Service;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
-
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class EventService {
@@ -139,40 +142,6 @@ public class EventService {
 //    }
 
 
-
-    @Transactional
-    public EventDTO addParticipant(Integer eventId, String token) {
-
-        System.out.println("S a apelat subscribeAtEvent");
-        Integer userId = Integer.valueOf(token.substring(6));
-        System.out.println("S a apelat subscribeAtEvent" + userId);
-
-        EventDetails eventdetailExists = eventDetailsRepository.findByEventId(eventId);
-        Optional<User> user = userRepository.findById(userId);
-        Optional<Event> event;
-        if (eventdetailExists != null && user.isPresent()) {
-
-            event = eventRepository.findById(eventId);
-            if (event.isPresent()) {
-
-                Attendees attendees = new Attendees(event.get(), user.get());
-
-                attendees.setUser(user.get());
-                attendees.setEvent(event.get());
-
-                entityManager.persist(attendees);
-//                user.get().getListOfAttendance().add(eventAttendanc);
-//
-//                event.get().getAttendancSetId().add(eventAttendanc);
-
-            }
-
-        }
-        return eventModelMapper.fromEntityToDto(eventdetailExists);
-
-    }
-
-
     public EventDTO getById(Integer eventId) {
         Event eventExists = eventRepository.findById(eventId)
                 .orElseThrow(() -> new IllegalArgumentException((String.format("Event id = %d doesn`t exist", eventId))));
@@ -182,28 +151,15 @@ public class EventService {
     }
 
 
-//    public List<EventDTO> findPastEvents(){
-//
-//    }
-//
-//    public List<EventDTO> findMyEvents(){
-//
-//    }
-
-
-
-
-
-    public EventDTO subscribeAtEvent(Integer eventId, Integer token) {
+    public EventDTO subscribeAtEvent(Integer eventId, Integer token, List<Integer> attendanceIds) {
 
         System.out.println("S a apelat subscribeAtEvent");
-        List<EventDTO> eventDTOS = new ArrayList<>();
         Event eventExists = eventRepository.findById(eventId)
                 .orElseThrow(() -> new IllegalArgumentException((String.format("Event id = %d doesn`t exist", eventId))));
         User userExists = userRepository.findById(token)
-                .orElseThrow(() -> new IllegalArgumentException((String.format("Event id = %d doesn`t exist", Integer.valueOf(token)))));
+                .orElseThrow(() -> new IllegalArgumentException((String.format("User id = %d doesn`t exist", Integer.valueOf(token)))));
         EventDTO eDTO = new EventDTO();
-        List<Integer> attendeesIds = new ArrayList<>();
+        // List<Integer> attendeesIds = new ArrayList<>();
         for (EventDetails e : eventDetailsRepository.findAll()) {
             if (e.getEvent().getId().equals(eventExists.getId())) {
                 Attendees attendees = new Attendees(eventExists, userExists);
@@ -213,33 +169,69 @@ public class EventService {
                 System.out.println("attendees " + attendees);
                 attendeesRepository.save(attendees);
                 eDTO = eventModelMapper.fromEntityToDto(e);
-                attendeesIds.add(token);
+                //  attendeesIds.add(token);
                 System.out.println("THE TOKEN in subscribeService is " + token);
-                eDTO.setAttendanceIds(attendeesIds);
+                List<Attendees> attendeesList = attendeesRepository.findAllByEvent_Id(eventId);
+                attendanceIds = attendeesList.stream().map(attendees1 -> attendees1.getUser().getId()).collect(Collectors.toList());
+                // attendanceIds.add(token);
+                eDTO.setAttendanceIds(attendanceIds);
+                return eDTO;
             }
         }
-
         return eDTO;
     }
+
+    public EventDTO unsubscribeAtEvent(Integer eventId, Integer userId, List<Integer> attendanceIds) {
+
+        Event eventExists = eventRepository.findById(eventId)
+                .orElseThrow(() -> new IllegalArgumentException((String.format("Event id = %d doesn`t exist", eventId))));
+        User userExists = userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException((String.format("User id = %d doesn`t exist", Integer.valueOf(userId)))));
+        List<Attendees> attendeesList = attendeesRepository.findAllByEvent_Id(eventId);
+        EventDTO eDTO = new EventDTO();
+        EventDetails eventDetails = eventDetailsRepository.findByEventId(eventExists.getId());
+        eDTO = eventModelMapper.fromEntityToDto(eventDetails);
+        for(Attendees attendees : attendeesList){
+            if(attendees.getUser().getId().equals(userId) && attendees.getEvent().getId().equals(eventId)){
+                int index = attendeesList.indexOf(attendees);
+                attendeesList.remove(index);
+                attendeesRepository.delete(attendees);
+                List<Attendees> attendeesList1 = attendeesRepository.findAllByEvent_Id(eventId);
+                attendanceIds = attendeesList1.stream().map(attendees1 -> attendees1.getUser().getId()).collect(Collectors.toList());
+                eDTO.setAttendanceIds(attendanceIds);
+                return eDTO;
+            }
+        }
+        return eDTO;
+    }
+
     @PersistenceContext
     private EntityManager entityManager;
 
-    public EventDTO addFeedback(Integer eventId,  ArrayList<LinkedHashMap<String, Object>> feedback) {
+    public EventDTO addFeedback(Integer eventId, ArrayList<LinkedHashMap<String, Object>> feedback) {
 
         System.out.println("Entered inside the addFeedback Service");
 
-//        Event eventExists = eventRepository.findById(eventId)
-//                .orElseThrow(() -> new IllegalArgumentException((String.format("Event id = %d doesn`t exist", eventId))));
-        Event eventExists = entityManager.find( Event.class, eventId );
+
+        Event eventExists = entityManager.find(Event.class, eventId);
 
         System.out.println("event exists" + eventExists);
         List<Feedback> feedbacks = feedbackRepository.findByEvent(eventExists);
+
+        List<FeedbackDTO> feedbackDTOS = new ArrayList<>();
+        FeedbackDTO newFeedback = new FeedbackDTO();
+        for (Feedback feedback1 : feedbacks) {
+            modelMapper.map(feedback1, newFeedback);
+            feedbackDTOS.add(newFeedback);
+        }
+
         LinkedHashMap<String, Object> feedback1 = new LinkedHashMap<>();
         EventDetails eventDetails = eventDetailsRepository.findByEvent(eventExists);
         EventDTO eventDTO1 = eventModelMapper.fromEntityToDto(eventDetails);
-        for(LinkedHashMap<String, Object>  feedback2 : feedback){
+        Feedback feedback3 = new Feedback();
+        for (LinkedHashMap<String, Object> feedback2 : feedback) {
             System.out.println("INTRU in for");
-            Feedback feedback3 = new Feedback();
+
             feedback3.setClarity(feedback2.get("clarity").toString());
             feedback3.setOriginality(feedback2.get("originality").toString());
             feedback3.setComplexity(feedback2.get("complexity").toString());
@@ -248,15 +240,29 @@ public class EventService {
 
             feedback3.setEvent(eventExists);
             feedbackRepository.save(feedback3);
+
+
+
+            FeedbackDTO feedbackDTO = new FeedbackDTO();
+            modelMapper.map(feedback3, feedbackDTO);
+            feedbackDTO.setUsersId(eventExists.getUser().getId());
+
             eventExists.addFeedback(feedback3);
 
             feedbacks.add(feedback3);
-            eventDTO1.setFeedback(feedbacks);
+
+            feedbackDTOS.add(feedbackDTO);
+
+            //eventDTO1.setFeedback(feedbacks);
+            eventDTO1.setFeedback(feedbackDTOS);
+
+          //  return eventDTO1;
 
         }
 
 
-
         return eventDTO1;
     }
+
+
 }

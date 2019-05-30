@@ -2,6 +2,7 @@ package edu.arobs.meetingsapp.event;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import edu.arobs.meetingsapp.Feedback.Feedback;
+import edu.arobs.meetingsapp.Feedback.FeedbackDTO;
 import edu.arobs.meetingsapp.user.UserDTO;
 import lombok.Data;
 
@@ -24,12 +25,14 @@ public class EventDTO {
     private Date date;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm:ss")
     private Time time;
+
     private List<Integer> attendanceIds = new ArrayList<>();////
     private Integer maxPeople;////persons
     private List<Integer> waitingListIds = new ArrayList<>();/////
     private Long timestamp;///
 
-    private List<Feedback> feedback = new ArrayList<Feedback>();
+    //  private List<Feedback> feedback = new ArrayList<Feedback>();
+    private List<FeedbackDTO> feedback = new ArrayList<>();
     private UserDTO users;
     private String description;
 

@@ -76,11 +76,20 @@ public class EventController {
 //        return eventService.subscribeAtEvent(eventId, token);
 //    }
 
-    @PatchMapping("/{eventId}/{userId}")
+    @PatchMapping("/subscribe/{eventId}/{userId}")
     @ResponseBody
-    public EventDTO subscribeAtEvent(@PathVariable Integer eventId, @PathVariable Integer userId) {
+    public EventDTO subscribeAtEvent(@PathVariable Integer eventId, @PathVariable Integer userId, @RequestBody Object o) {
         System.out.println("Token inside the subscribe Controller " + userId);
-        return eventService.subscribeAtEvent(eventId, userId);
+        LinkedHashMap<String,List<Integer>> attendList =  (LinkedHashMap<String,List<Integer>>) o;
+        return eventService.subscribeAtEvent(eventId, userId, attendList.get("attendanceIds"));
+    }
+
+    @PatchMapping("/unsubscribe/{eventId}/{userId}")
+    @ResponseBody
+    public EventDTO unsubscribeAtEvent(@PathVariable Integer eventId, @PathVariable Integer userId, @RequestBody Object o) {
+        System.out.println("Token inside the unsubscribe Controller " + userId);
+        LinkedHashMap<String,List<Integer>> attendList =  (LinkedHashMap<String,List<Integer>>) o;
+        return eventService.unsubscribeAtEvent(eventId, userId, attendList.get("attendanceIds"));
     }
 
 
