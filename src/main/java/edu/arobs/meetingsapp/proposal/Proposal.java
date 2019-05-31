@@ -1,14 +1,13 @@
 package edu.arobs.meetingsapp.proposal;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import edu.arobs.meetingsapp.TimeSetter.TimeSetter;
+import edu.arobs.meetingsapp.timeSetter.TimeSetter;
 import edu.arobs.meetingsapp.user.User;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 enum Difficulty

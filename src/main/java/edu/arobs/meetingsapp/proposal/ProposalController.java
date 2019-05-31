@@ -17,7 +17,7 @@ public class ProposalController {
         this.proposalService = proposalService;
     }
 
-    @PostMapping
+    @PostMapping("/create")
     @ResponseStatus(code = HttpStatus.CREATED)
     public ProposalDTOForCreate create(@RequestParam(required = true) Integer userId, @RequestBody ProposalDTOForCreate proposalDTO) {
         return proposalService.create(userId, proposalDTO);
@@ -64,4 +64,5 @@ public class ProposalController {
     public List<ProposalsFromUsersForYearDTO> getProposalsFromUserByYear(@RequestParam(required = true) Integer userId, @RequestParam(required = true) Integer year ){
         return proposalService.getProposalsFromUserForYear(userId, year);
     }
+
 }

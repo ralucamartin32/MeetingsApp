@@ -1,4 +1,4 @@
-package edu.arobs.meetingsapp.Feedback;
+package edu.arobs.meetingsapp.feedback;
 
 import org.springframework.web.bind.annotation.RestController;
 

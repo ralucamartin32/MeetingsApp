@@ -1,4 +1,4 @@
-package edu.arobs.meetingsapp.Feedback;
+package edu.arobs.meetingsapp.feedback;
 
 import edu.arobs.meetingsapp.event.Event;
 import org.springframework.data.repository.CrudRepository;

@@ -1,17 +1,14 @@
 package edu.arobs.meetingsapp.event;
 
-import edu.arobs.meetingsapp.TimeSetter.TimeSetter;
+import edu.arobs.meetingsapp.timeSetter.TimeSetter;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
-import java.sql.Timestamp;
-import java.time.LocalDate;
-import java.time.LocalTime;
 
 enum Type {
-    PRESENTATION, PROJECT, CLIENT_DISCUSSION;
+    PRESENTATION, Presentation, Workshop, PROJECT, CLIENT_DISCUSSION;
 }
 
 enum Difficulty {

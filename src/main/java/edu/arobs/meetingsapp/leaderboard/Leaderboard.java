@@ -1,6 +1,6 @@
 package edu.arobs.meetingsapp.leaderboard;
 
-import edu.arobs.meetingsapp.TimeSetter.TimeSetter;
+import edu.arobs.meetingsapp.timeSetter.TimeSetter;
 import edu.arobs.meetingsapp.user.User;
 import lombok.Data;
 

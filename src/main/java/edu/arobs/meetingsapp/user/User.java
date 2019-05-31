@@ -1,13 +1,10 @@
 package edu.arobs.meetingsapp.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import edu.arobs.meetingsapp.TimeSetter.TimeSetter;
+import edu.arobs.meetingsapp.timeSetter.TimeSetter;
 import lombok.Data;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 
 @Entity

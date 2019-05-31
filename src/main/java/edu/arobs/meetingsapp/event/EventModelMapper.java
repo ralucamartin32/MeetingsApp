@@ -1,10 +1,9 @@
 package edu.arobs.meetingsapp.event;
 
-import edu.arobs.meetingsapp.Feedback.Feedback;
-import edu.arobs.meetingsapp.Feedback.FeedbackDTO;
-import edu.arobs.meetingsapp.Feedback.FeedbackRepository;
+import edu.arobs.meetingsapp.feedback.Feedback;
+import edu.arobs.meetingsapp.feedback.FeedbackDTO;
+import edu.arobs.meetingsapp.feedback.FeedbackRepository;
 import edu.arobs.meetingsapp.user.UserModelMapper;
-import org.dom4j.rule.Mode;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

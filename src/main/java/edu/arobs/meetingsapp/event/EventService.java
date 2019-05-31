@@ -1,8 +1,8 @@
 package edu.arobs.meetingsapp.event;
 
-import edu.arobs.meetingsapp.Feedback.Feedback;
-import edu.arobs.meetingsapp.Feedback.FeedbackDTO;
-import edu.arobs.meetingsapp.Feedback.FeedbackRepository;
+import edu.arobs.meetingsapp.feedback.Feedback;
+import edu.arobs.meetingsapp.feedback.FeedbackDTO;
+import edu.arobs.meetingsapp.feedback.FeedbackRepository;
 import edu.arobs.meetingsapp.user.User;
 import edu.arobs.meetingsapp.user.UserRepository;
 import org.modelmapper.ModelMapper;

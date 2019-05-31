@@ -1,10 +1,9 @@
 package edu.arobs.meetingsapp.event;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import edu.arobs.meetingsapp.Feedback.Feedback;
-import edu.arobs.meetingsapp.TimeSetter.TimeSetter;
+import edu.arobs.meetingsapp.feedback.Feedback;
+import edu.arobs.meetingsapp.timeSetter.TimeSetter;
 import edu.arobs.meetingsapp.user.User;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
