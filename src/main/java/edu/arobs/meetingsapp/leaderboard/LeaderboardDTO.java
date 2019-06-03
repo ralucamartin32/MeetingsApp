@@ -9,5 +9,4 @@ public class LeaderboardDTO {
     private Integer id;
     private UserDTO users;
     private Integer usersId;
-
 }

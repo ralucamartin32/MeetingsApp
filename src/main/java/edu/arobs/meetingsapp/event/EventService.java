@@ -112,34 +112,6 @@ public class EventService {
         return futureEvents;
 
     }
-//
-//    public EventDTO subscribeAtEvent(Integer eventId, String token) {
-//
-//        System.out.println("S a apelat subscribeAtEvent");
-//        List<EventDTO> eventDTOS = new ArrayList<>();
-//        Event eventExists = eventRepository.findById(eventId)
-//                .orElseThrow(() -> new IllegalArgumentException((String.format("Event id = %d doesn`t exist", eventId))));
-//        User userExists = userRepository.findById(Integer.valueOf(token.substring(6)))
-//                .orElseThrow(() -> new IllegalArgumentException((String.format("Event id = %d doesn`t exist", Integer.valueOf(token.substring(6))))));
-//        EventDTO eDTO = new EventDTO();
-//        List<Integer> attendeesIds = new ArrayList<>();
-//        for (EventDetails e : eventDetailsRepository.findAll()) {
-//            if (e.getEvent().getId().equals(eventExists.getId())) {
-//                Attendees attendees = new Attendees(eventExists, userExists);
-//                attendees.setEvent(eventExists);
-//                attendees.setUser(userExists);
-//                attendees.setRegistrationDate(Timestamp.valueOf(LocalDateTime.now()));
-//                System.out.println("attendees " + attendees);
-//                attendeesRepository.save(attendees);
-//                eDTO = eventModelMapper.fromEntityToDto(e);
-//                attendeesIds.add(Integer.valueOf(token.substring(6)));
-//                System.out.println("THE TOKEN in subscribeService is " + token.substring(6));
-//                eDTO.setAttendanceIds(attendeesIds);
-//            }
-//        }
-//
-//        return eDTO;
-//    }
 
 
     public EventDTO getById(Integer eventId) {
@@ -159,7 +131,8 @@ public class EventService {
         User userExists = userRepository.findById(token)
                 .orElseThrow(() -> new IllegalArgumentException((String.format("User id = %d doesn`t exist", Integer.valueOf(token)))));
         EventDTO eDTO = new EventDTO();
-        // List<Integer> attendeesIds = new ArrayList<>();
+        List<Attendees> existingAttendees;
+        existingAttendees = attendeesRepository.findAllByEvent_Id(eventExists.getId());
         for (EventDetails e : eventDetailsRepository.findAll()) {
             if (e.getEvent().getId().equals(eventExists.getId())) {
                 Attendees attendees = new Attendees(eventExists, userExists);
@@ -167,13 +140,16 @@ public class EventService {
                 attendees.setUser(userExists);
                 attendees.setRegistrationDate(Timestamp.valueOf(LocalDateTime.now()));
                 System.out.println("attendees " + attendees);
+                if (existingAttendees.size() < e.getMaxPersons()) {
+                    attendees.setAttendee(true);
+                } else {
+                    attendees.setAttendee(false);
+                }
                 attendeesRepository.save(attendees);
                 eDTO = eventModelMapper.fromEntityToDto(e);
-                //  attendeesIds.add(token);
                 System.out.println("THE TOKEN in subscribeService is " + token);
                 List<Attendees> attendeesList = attendeesRepository.findAllByEvent_Id(eventId);
                 attendanceIds = attendeesList.stream().map(attendees1 -> attendees1.getUser().getId()).collect(Collectors.toList());
-                // attendanceIds.add(token);
                 eDTO.setAttendanceIds(attendanceIds);
                 return eDTO;
             }
@@ -191,8 +167,8 @@ public class EventService {
         EventDTO eDTO = new EventDTO();
         EventDetails eventDetails = eventDetailsRepository.findByEventId(eventExists.getId());
         eDTO = eventModelMapper.fromEntityToDto(eventDetails);
-        for(Attendees attendees : attendeesList){
-            if(attendees.getUser().getId().equals(userId) && attendees.getEvent().getId().equals(eventId)){
+        for (Attendees attendees : attendeesList) {
+            if (attendees.getUser().getId().equals(userId) && attendees.getEvent().getId().equals(eventId)) {
                 int index = attendeesList.indexOf(attendees);
                 attendeesList.remove(index);
                 attendeesRepository.delete(attendees);
@@ -211,56 +187,38 @@ public class EventService {
     public EventDTO addFeedback(Integer eventId, ArrayList<LinkedHashMap<String, Object>> feedback) {
 
         System.out.println("Entered inside the addFeedback Service");
-
-
         Event eventExists = entityManager.find(Event.class, eventId);
-
         System.out.println("event exists" + eventExists);
         List<Feedback> feedbacks = feedbackRepository.findByEvent(eventExists);
-
         List<FeedbackDTO> feedbackDTOS = new ArrayList<>();
         FeedbackDTO newFeedback = new FeedbackDTO();
         for (Feedback feedback1 : feedbacks) {
             modelMapper.map(feedback1, newFeedback);
             feedbackDTOS.add(newFeedback);
         }
-
         LinkedHashMap<String, Object> feedback1 = new LinkedHashMap<>();
         EventDetails eventDetails = eventDetailsRepository.findByEvent(eventExists);
         EventDTO eventDTO1 = eventModelMapper.fromEntityToDto(eventDetails);
         Feedback feedback3 = new Feedback();
-        for (LinkedHashMap<String, Object> feedback2 : feedback) {
-            System.out.println("INTRU in for");
-
-            feedback3.setClarity(feedback2.get("clarity").toString());
-            feedback3.setOriginality(feedback2.get("originality").toString());
-            feedback3.setComplexity(feedback2.get("complexity").toString());
-            feedback3.setEngagement(feedback2.get("engagement").toString());
-            feedback3.setCursive(feedback2.get("cursive").toString());
-
-            feedback3.setEvent(eventExists);
-            feedbackRepository.save(feedback3);
-
-
-
-            FeedbackDTO feedbackDTO = new FeedbackDTO();
-            modelMapper.map(feedback3, feedbackDTO);
-            feedbackDTO.setUsersId(eventExists.getUser().getId());
-
-            eventExists.addFeedback(feedback3);
-
-            feedbacks.add(feedback3);
-
-            feedbackDTOS.add(feedbackDTO);
-
-            //eventDTO1.setFeedback(feedbacks);
-            eventDTO1.setFeedback(feedbackDTOS);
-
-          //  return eventDTO1;
-
+        if (feedback.size() != 0) {
+            for (LinkedHashMap<String, Object> feedback2 : feedback) {
+                System.out.println("INTRU in for");
+                feedback3.setClarity(feedback2.get("clarity").toString());
+                feedback3.setOriginality(feedback2.get("originality").toString());
+                feedback3.setComplexity(feedback2.get("complexity").toString());
+                feedback3.setEngagement(feedback2.get("engagement").toString());
+                feedback3.setCursive(feedback2.get("cursive").toString());
+                feedback3.setEvent(eventExists);
+                feedbackRepository.save(feedback3);
+                FeedbackDTO feedbackDTO = new FeedbackDTO();
+                modelMapper.map(feedback3, feedbackDTO);
+                feedbackDTO.setUsersId(eventExists.getUser().getId());
+                eventExists.addFeedback(feedback3);
+                feedbacks.add(feedback3);
+                feedbackDTOS.add(feedbackDTO);
+                eventDTO1.setFeedback(feedbackDTOS);
+            }
         }
-
-
         return eventDTO1;
     }
 

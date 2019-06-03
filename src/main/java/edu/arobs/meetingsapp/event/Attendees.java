@@ -10,7 +10,7 @@ import java.util.Objects;
 @Entity
 @Table
 @Data
-public class Attendees  {
+public class Attendees {
 
     @EmbeddedId
     private AttendeesId id;
@@ -25,7 +25,10 @@ public class Attendees  {
 
     private Timestamp registrationDate;
 
-    public Attendees(){}
+    private Boolean attendee;
+
+    public Attendees() {
+    }
 
     public Attendees(Event event, User user) {
         this.event = event;
@@ -34,17 +37,18 @@ public class Attendees  {
     }
 
     @Override
-    public boolean equals(Object o){
-        if(this == o) return true;
-        if(o == null || getClass() != o.getClass())
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass())
             return false;
         Attendees that = (Attendees) o;
         return Objects.equals(event, that.event) &&
                 Objects.equals(user, that.user);
 
     }
+
     @Override
-    public int hashCode(){
+    public int hashCode() {
         return Objects.hash(event, user);
     }
 }

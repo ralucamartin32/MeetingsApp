@@ -9,9 +9,9 @@ public class LeaderboardModelMapper {
 
     @Autowired
     private final UserModelMapper userModelMapper;
-
-
+    
     public LeaderboardModelMapper(UserModelMapper userModelMapper) {
+
         this.userModelMapper = userModelMapper;
     }
 
@@ -24,7 +24,6 @@ public class LeaderboardModelMapper {
     }
 
     public LeaderboardDTO fromEntityToDto(Leaderboard leaderboard) {
-
 
         LeaderboardDTO leaderboardDTO = new LeaderboardDTO();
         leaderboardDTO.setId(leaderboard.getId());

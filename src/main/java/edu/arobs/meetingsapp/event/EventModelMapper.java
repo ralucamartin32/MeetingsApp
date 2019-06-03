@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 @Component
 public class EventModelMapper {
     @Autowired
-    private final UserModelMapper userModelMapper ;
+    private final UserModelMapper userModelMapper;
 
     @Autowired
     private final AttendeesRepository attendeesRepository;
@@ -26,8 +26,8 @@ public class EventModelMapper {
     private final FeedbackRepository feedbackRepository;
     @Autowired
     private final ModelMapper modelMapper;
-    public EventModelMapper(UserModelMapper userModelMapper, AttendeesRepository attendeesRepository, FeedbackRepository feedbackRepository, ModelMapper modelMapper)
-    {
+
+    public EventModelMapper(UserModelMapper userModelMapper, AttendeesRepository attendeesRepository, FeedbackRepository feedbackRepository, ModelMapper modelMapper) {
         this.userModelMapper = userModelMapper;
         this.attendeesRepository = attendeesRepository;
         this.feedbackRepository = feedbackRepository;
@@ -36,9 +36,7 @@ public class EventModelMapper {
 
     public EventDetails fromDtoToEntity(EventDTO eventDTO) {
 
-
         EventDetails eventDetails = new EventDetails();
-
         eventDetails.setDate(eventDTO.getDate());
         eventDetails.setName(eventDTO.getName());
         eventDetails.setTime(eventDTO.getTime());
@@ -48,23 +46,25 @@ public class EventModelMapper {
         eventDetails.setDifficulty(eventDTO.getDifficulty());
         eventDetails.setMaxPersons(eventDTO.getMaxPeople());
         eventDetails.setDescription(eventDTO.getDescription());
-
-
         return eventDetails;
     }
 
     public EventDTO fromEntityToDto(EventDetails eventDetails) {
 
         EventDTO eventDTO = new EventDTO();
-        LocalDateTime localDateTime = LocalDateTime.of(eventDetails.getDate().toLocalDate(),eventDetails.getTime().toLocalTime());
-
+        LocalDateTime localDateTime = LocalDateTime.of(eventDetails.getDate().toLocalDate(), eventDetails.getTime().toLocalTime());
         ZoneId zoneId = ZoneId.systemDefault(); // or: ZoneId.of("Europe/Oslo");
         long epoch = localDateTime.atZone(zoneId).toEpochSecond();
-
-       List<Attendees> list = attendeesRepository.findAllByEvent_Id(eventDetails.getId());
-
-//        System.out.println("LISTA " + list);
-        List<Integer> intList = list.stream().map(attendees -> attendees.getUser().getId()).collect(Collectors.toList());
+        List<Attendees> allAttendeesList = attendeesRepository.findAllByEvent_Id(eventDetails.getId());
+        List<Integer> attendeesList = new ArrayList<>();
+        List<Integer> waitingList = new ArrayList<>();
+        for (Attendees a : allAttendeesList) {
+            if (a.getAttendee().equals(true)) {
+                attendeesList = allAttendeesList.stream().map(attendees -> attendees.getUser().getId()).collect(Collectors.toList());
+            } else {
+                waitingList = allAttendeesList.stream().map(attendees -> attendees.getUser().getId()).collect(Collectors.toList());
+            }
+        }
 
         eventDTO.setId(eventDetails.getEvent().getId());
         eventDTO.setUsers(userModelMapper.fromEntityToDTO(eventDetails.getEvent().getUser()));
@@ -79,24 +79,16 @@ public class EventModelMapper {
         eventDTO.setDifficulty(eventDetails.getDifficulty());
         eventDTO.setMaxPeople(eventDetails.getMaxPersons());
         eventDTO.setDescription(eventDetails.getDescription());
-        eventDTO.setAttendanceIds(intList);
-
+        eventDTO.setAttendanceIds(attendeesList);
+        eventDTO.setWaitingListIds(waitingList);
         List<Feedback> feedbackList = feedbackRepository.findByEvent(eventDetails.getEvent());
         List<FeedbackDTO> feedbackDTOList = new ArrayList<>();
         FeedbackDTO feedbackDTO = new FeedbackDTO();
-        for(Feedback feedback : feedbackList){
+        for (Feedback feedback : feedbackList) {
             modelMapper.map(feedback, feedbackDTO);
             feedbackDTOList.add(feedbackDTO);
         }
-
         eventDTO.setFeedback(feedbackDTOList);
-
-
-
-
-
-
         return eventDTO;
     }
-
 }

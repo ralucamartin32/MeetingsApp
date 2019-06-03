@@ -13,19 +13,21 @@ import java.util.List;
 
 @Service
 public class LeaderboardService {
+
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(EventService.class);
     private final LeaderboardRepository leaderboardRepository;
     private final UserRepository userRepository;
     private final LeaderboardModelMapper leaderboardModelMapper;
+
     @Autowired
-    public LeaderboardService(LeaderboardRepository leaderboardRepository, UserRepository userRepository, LeaderboardModelMapper leaderboardModelMapper){
+    public LeaderboardService(LeaderboardRepository leaderboardRepository, UserRepository userRepository, LeaderboardModelMapper leaderboardModelMapper) {
         this.leaderboardRepository = leaderboardRepository;
         this.userRepository = userRepository;
         this.leaderboardModelMapper = leaderboardModelMapper;
     }
 
     @Transactional
-    public LeaderboardDTO create(Integer userId, LeaderboardDTO leaderboardDTO){
+    public LeaderboardDTO create(Integer userId, LeaderboardDTO leaderboardDTO) {
 
         Leaderboard leaderboard = new Leaderboard();
         User user = userRepository.findById(userId)
@@ -41,10 +43,10 @@ public class LeaderboardService {
 
         List<LeaderboardDTO> leaderboardDTOS = new ArrayList<>();
         LeaderboardDTO leaderboardDTO;
-        for(Leaderboard leaderboard : leaderboardRepository.findAll()){
+        for (Leaderboard leaderboard : leaderboardRepository.findAll()) {
             leaderboardDTO = leaderboardModelMapper.fromEntityToDto(leaderboard);
             leaderboardDTOS.add(leaderboardDTO);
         }
-        return  leaderboardDTOS;
+        return leaderboardDTOS;
     }
 }

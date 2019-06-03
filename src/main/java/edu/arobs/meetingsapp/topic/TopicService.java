@@ -14,10 +14,13 @@ import java.util.List;
 @Service
 public class TopicService {
 
+    private final TopicRepository topicRepository;
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
+
     @Autowired
-    public TopicService(UserRepository userRepository, ModelMapper modelMapper){
+    public TopicService(TopicRepository topicRepository, UserRepository userRepository, ModelMapper modelMapper) {
+        this.topicRepository = topicRepository;
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
     }
@@ -34,10 +37,12 @@ public class TopicService {
         newTopic.setTopicType(Type.valueOf(topic.get("topicType").toString()));
         newTopic.setUser(user);
         newTopic.setUserPresenter(Boolean.valueOf(topic.get("isUserPresenter").toString()));
-        List<Vote> usersVotes = new ArrayList<>();
-        usersVotes = (ArrayList<Vote>)  topic.get("userVotes");
+        List<Vote> usersVotes;
+        usersVotes = (ArrayList<Vote>) topic.get("userVotes");
         newTopic.setUsersVotes(usersVotes);
+        topicRepository.save(newTopic);
         modelMapper.map(newTopic, topicDTO);
+        System.out.println(topicDTO);
         return topicDTO;
     }
 }

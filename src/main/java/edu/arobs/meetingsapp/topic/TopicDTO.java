@@ -1,11 +1,15 @@
 package edu.arobs.meetingsapp.topic;
 
 import edu.arobs.meetingsapp.vote.Vote;
+import lombok.Getter;
+import lombok.Setter;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Setter
+@Getter
 public class TopicDTO {
     private boolean isUserPresenter;
     private Integer sumOfVotes;
