@@ -32,4 +32,19 @@ public class TopicController {
         LinkedHashMap<String, Object> topic = (LinkedHashMap<String, Object>) o;
         return topicService.createTopic(topic);
     }
+
+    @GetMapping("/{postTopicId}")
+    @ResponseBody
+    public TopicDTO getById(@PathVariable Integer postTopicId){
+
+        return topicService.getById(postTopicId);
+    }
+
+    @PatchMapping("/{postTopicId}")
+    @ResponseBody
+    public TopicDTOForVote voteTopic(@PathVariable Integer postTopicId,@RequestHeader("Referer") String header,@RequestBody PostPatchDTO postPatchDTO) {
+
+        return topicService.voteTopic(postPatchDTO, postTopicId);
+
+    }
 }

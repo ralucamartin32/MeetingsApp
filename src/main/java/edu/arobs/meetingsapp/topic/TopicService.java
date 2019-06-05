@@ -5,6 +5,8 @@ import edu.arobs.meetingsapp.event.EventDetails;
 import edu.arobs.meetingsapp.user.User;
 import edu.arobs.meetingsapp.user.UserRepository;
 import edu.arobs.meetingsapp.vote.Vote;
+import edu.arobs.meetingsapp.vote.VoteDTO;
+import edu.arobs.meetingsapp.vote.VoteRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,19 +15,22 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TopicService {
 
     private final TopicRepository topicRepository;
     private final UserRepository userRepository;
+    private final VoteRepository voteRepository;
     private final ModelMapper modelMapper;
     private final TopicModelMapper topicModelMapper;
 
     @Autowired
-    public TopicService(TopicRepository topicRepository, UserRepository userRepository, ModelMapper modelMapper, TopicModelMapper topicModelMapper) {
+    public TopicService(TopicRepository topicRepository, UserRepository userRepository, VoteRepository voteRepository, ModelMapper modelMapper, TopicModelMapper topicModelMapper) {
         this.topicRepository = topicRepository;
         this.userRepository = userRepository;
+        this.voteRepository = voteRepository;
         this.modelMapper = modelMapper;
         this.topicModelMapper = topicModelMapper;
     }
@@ -56,10 +61,46 @@ public class TopicService {
         List<TopicDTO> topicDTOS = new ArrayList<>();
         TopicDTO topicDTO = new TopicDTO();
         for (Topic topic : topicRepository.findAll()) {
-                modelMapper.map(topic, topicDTO);
-                topicDTOS.add(topicDTO);
+            modelMapper.map(topic, topicDTO);
+            topicDTOS.add(topicDTO);
         }
 
         return topicDTOS;
+    }
+
+    public TopicDTO getById(Integer topicId) {
+        TopicDTO topicDTO = new TopicDTO();
+        Topic topic = topicRepository.findById(topicId)
+                .orElseThrow(() -> new IllegalArgumentException(String.format("Topic id=%d does not exist", topicId)));
+        modelMapper.map(topic, topicDTO);
+        return topicDTO;
+    }
+
+    public TopicDTOForVote voteTopic(PostPatchDTO postPatchDTO, Integer topicId) {
+
+        Integer vote = postPatchDTO.getSumOfVotes();
+        Topic topic = topicRepository.findById(topicId)
+                .orElseThrow(() -> new IllegalArgumentException(String.format("Topic id=%d does not exist", topicId)));
+        topic.setSumOfVotes(topic.getSumOfVotes() + vote);
+        Vote newVote = new Vote();
+        if (vote.equals(-1)) {
+            newVote.setMinus(vote);
+        } else {
+            newVote.setPlus(vote);
+        }
+        newVote.setTopic(topic);
+        topicRepository.save(topic);
+        voteRepository.save(newVote);
+        TopicDTOForVote topicDTOForVote = new TopicDTOForVote();
+        modelMapper.map(topic, topicDTOForVote);
+        VoteDTO voteDTO = new VoteDTO();
+        List<VoteDTO> voteDTOS = new ArrayList<>();
+        for(Vote v : voteRepository.findAll()){
+            modelMapper.map(v,voteDTO);
+            voteDTOS.add(voteDTO);
+            
+        }
+        topicDTOForVote.setUserVotes(voteDTOS);
+        return  topicDTOForVote;
     }
 }
