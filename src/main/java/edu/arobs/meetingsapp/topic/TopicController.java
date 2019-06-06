@@ -1,6 +1,5 @@
 package edu.arobs.meetingsapp.topic;
 
-import edu.arobs.meetingsapp.proposal.ProposalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +20,7 @@ public class TopicController {
 
     @GetMapping
     @ResponseBody
-    public List<TopicDTO> getTopics(){
+    public List<TopicDTO> getTopics() {
         return topicService.getTopics();
     }
 
@@ -35,16 +34,15 @@ public class TopicController {
 
     @GetMapping("/{postTopicId}")
     @ResponseBody
-    public TopicDTO getById(@PathVariable Integer postTopicId){
+    public TopicDTO getById(@PathVariable Integer postTopicId) {
 
         return topicService.getById(postTopicId);
     }
 
     @PatchMapping("/{postTopicId}")
     @ResponseBody
-    public TopicDTOForVote voteTopic(@PathVariable Integer postTopicId,@RequestHeader("Referer") String header,@RequestBody PostPatchDTO postPatchDTO) {
+    public TopicDTOForVote voteTopic(@PathVariable Integer postTopicId, @RequestBody PostPatchDTO postPatchDTO) {
 
         return topicService.voteTopic(postPatchDTO, postTopicId);
-
     }
 }

@@ -1,6 +1,5 @@
 package edu.arobs.meetingsapp.leaderboard;
 
-import edu.arobs.meetingsapp.event.EventDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -12,8 +11,9 @@ import java.util.List;
 public class LeaderboardController {
 
     private LeaderboardService leaderboardService;
+
     @Autowired
-    public LeaderboardController(LeaderboardService leaderboardService){
+    public LeaderboardController(LeaderboardService leaderboardService) {
         this.leaderboardService = leaderboardService;
     }
 
@@ -25,7 +25,7 @@ public class LeaderboardController {
 
     @GetMapping
     @ResponseBody
-    public List<LeaderboardDTO> getAll(){
+    public List<LeaderboardDTO> getAll() {
         return leaderboardService.getAll();
     }
 }

@@ -5,7 +5,6 @@ import lombok.Data;
 @Data
 public class ProposalDTO {
 
-    //private Integer userId;
     private String title;
     private String author;
     private Type type;

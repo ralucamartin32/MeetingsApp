@@ -1,6 +1,5 @@
 package edu.arobs.meetingsapp.topic;
 
-import edu.arobs.meetingsapp.vote.Vote;
 import edu.arobs.meetingsapp.vote.VoteDTO;
 import lombok.Getter;
 import lombok.Setter;

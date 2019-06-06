@@ -27,7 +27,6 @@ public class GuestInterceptor implements HandlerInterceptor {
         return true;
     }
 
-    // Called after handler method request completion, before rendering the view
     @Override
     public void postHandle(HttpServletRequest req, HttpServletResponse res,
                            Object handler, @Nullable ModelAndView modelAndView)  throws Exception {
@@ -38,7 +37,6 @@ public class GuestInterceptor implements HandlerInterceptor {
         System.out.println("POST method " + myThreadLocal.get());
     }
 
-    // Called after rendering the view
     @Override
     public void afterCompletion(HttpServletRequest req, HttpServletResponse res,
                                 Object handler, Exception ex)  throws Exception {

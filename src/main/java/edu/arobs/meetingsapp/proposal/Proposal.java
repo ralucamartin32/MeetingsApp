@@ -10,13 +10,11 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
 
-enum Difficulty
-{
+enum Difficulty {
     LOW, MEDIUM, HIGH;
 }
 
-enum Type
-{
+enum Type {
     PRESENTATION, PROJECT, CLIENT_DISCUSSION;
 }
 
@@ -56,7 +54,7 @@ public class Proposal extends TimeSetter implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Proposal )) return false;
+        if (!(o instanceof Proposal)) return false;
         return id != null && id.equals(((Proposal) o).getId());
     }
 

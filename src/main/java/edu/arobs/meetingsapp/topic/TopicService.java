@@ -1,7 +1,5 @@
 package edu.arobs.meetingsapp.topic;
 
-import edu.arobs.meetingsapp.event.EventDTO;
-import edu.arobs.meetingsapp.event.EventDetails;
 import edu.arobs.meetingsapp.user.User;
 import edu.arobs.meetingsapp.user.UserRepository;
 import edu.arobs.meetingsapp.vote.Vote;
@@ -11,11 +9,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class TopicService {
@@ -59,8 +55,9 @@ public class TopicService {
     public List<TopicDTO> getTopics() {
 
         List<TopicDTO> topicDTOS = new ArrayList<>();
-        TopicDTO topicDTO = new TopicDTO();
+
         for (Topic topic : topicRepository.findAll()) {
+            TopicDTO topicDTO = new TopicDTO();
             modelMapper.map(topic, topicDTO);
             topicDTOS.add(topicDTO);
         }
@@ -85,8 +82,10 @@ public class TopicService {
         Vote newVote = new Vote();
         if (vote.equals(-1)) {
             newVote.setMinus(vote);
+            newVote.setPlus(0);
         } else {
             newVote.setPlus(vote);
+            newVote.setMinus(0);
         }
         newVote.setTopic(topic);
         topicRepository.save(topic);
@@ -95,12 +94,15 @@ public class TopicService {
         modelMapper.map(topic, topicDTOForVote);
         VoteDTO voteDTO = new VoteDTO();
         List<VoteDTO> voteDTOS = new ArrayList<>();
-        for(Vote v : voteRepository.findAll()){
-            modelMapper.map(v,voteDTO);
+        for (Vote v : voteRepository.findAll()) {
+
+            modelMapper.map(v, voteDTO);
+
+
             voteDTOS.add(voteDTO);
-            
+
         }
         topicDTOForVote.setUserVotes(voteDTOS);
-        return  topicDTOForVote;
+        return topicDTOForVote;
     }
 }
